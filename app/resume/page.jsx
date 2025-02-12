@@ -26,7 +26,7 @@ import {
 const about = {
   title: "About Me",
   description:
-    "I am a passionate software developer with expertise in full-stack development, machine learning, and cross-platform applications. With a focus on delivering impactful solutions, I thrive in creating efficient and scalable systems. Beyond technical skills, I am a proactive learner, team player, and dedicated to continuous improvement.",
+    "I am a passionate networking, cyber-security, machine learning, and IOT development. With a focus on delivering impactful solutions, I thrive in creating efficient and scalable systems. Beyond technical skills, I am a proactive learner, team player, and dedicated to continuous improvement.",
   info: [
     {
       fieldName: "Name",
@@ -93,7 +93,7 @@ const experience = {
   icon: "/assets/resume/badge.svg",
   title: "My Experience",
   description:
-    "Over the years, I have contributed to various innovative projects, gaining expertise in software development, team collaboration, and delivering high-quality solutions. Here’s a summary of my professional journey.",
+    "Over the years, I have contributed to various innovative projects, gaining expertise in Networking, Development, team collaboration, and delivering high-quality solutions. Here’s a summary of my professional journey.",
   items: [
     {
       company: "Teletalk",

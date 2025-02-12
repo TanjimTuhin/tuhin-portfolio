@@ -19,48 +19,76 @@ const services = [
     },
     {
         num: "02",
-        title: "Data Analysis",
-        description: `I specialize in extracting actionable insights from data to drive decision-making. My services include:
-        - Cleaning, organizing, and preparing datasets for analysis.
-        - Performing statistical analysis to uncover trends and patterns.
-        - Creating interactive dashboards and visualizations for clear communication.
-        - Providing data-driven solutions to solve business challenges.`,
+        title: "Cyber Security",
+        description: `I specialize in securing digital systems and networks to prevent cyber threats. My services include:
+                    -Conducting vulnerability assessments and penetration testing.
+                    -Implementing security protocols to safeguard networks and systems.
+                    -Analyzing and mitigating cyber threats in real-time.
+                    -Enhancing security posture through risk management strategies.`,
         href: "https://github.com/Md-tuhin-Islam"
     },
     {
         num: "03",
-        title: "Web & App Development",
-        description: `I create responsive websites and user-friendly mobile applications tailored to meet business needs. My services include:
-        - Developing custom websites with modern design and functionality.
-        - Building cross-platform mobile applications for iOS and Android.
-        - Implementing secure and scalable backend systems.
-        - Optimizing performance and ensuring seamless user experiences.
-        
-        I help businesses establish a strong online presence and deliver impactful digital solutions.`,
+        title: "Network Engineering",
+        description: `I design, configure, and maintain network infrastructures for reliable connectivity. My services include:
+                    -Setting up and managing enterprise-level network systems.
+                    -Configuring routers, switches, firewalls, and VPNs.
+                    -Optimizing network performance for speed, security, and scalability.
+                    -Troubleshooting and resolving network issues.
+                    I ensure seamless communication by building secure and efficient networks.`,
         href: "https://github.com/Md-tuhin-Islam"
     },
     {
         num: "04",
-        title: "Cross Platform Application Development",
-        description: `I develop versatile applications that work seamlessly across multiple platforms, including iOS, Android, and web. My services include:
-        - Building apps with a consistent user experience on all platforms.
-        - Leveraging frameworks like Flutter and React Native for efficient development.
-        - Ensuring high performance and responsiveness across devices.
-        - Integrating secure and scalable backend systems.
-        
-        I help businesses reach a wider audience with reliable cross-platform solutions.`,
+        title: "Robotics & IOT Development",
+        description: `I develop intelligent robotic systems and IoT solutions for automation and smart applications. My services include:
+                    -Designing and programming IoT devices with microcontrollers (ESP32, Raspberry Pi, etc.).
+                    -Developing automation solutions for industrial and home applications.
+                    -Integrating sensors, actuators, and wireless communication protocols.
+                    -Optimizing energy efficiency and real-time data processing.
+                    I bring smart technology to life through robotics and IoT innovations.`,
         href: "https://github.com/Md-tuhin-Islam"
     },
     {
         num: "05",
-        title: "AI Powered Chatbot Development",
-        description: `I create smart chatbots that can understand and respond to users in real time. My services include:
-        - Building chatbots for websites, apps, and messaging platforms.
-        - Using AI to provide accurate and helpful responses.
-        - Customizing chatbots to fit specific business needs.
-        - Ensuring smooth and engaging user experiences.
-        
-        I help businesses automate customer interactions and improve engagement with AI-driven solutions.`,
+        title: "Embedded System Development",
+        description: `I create reliable and efficient embedded systems for real-time applications. My services include:
+                    -Programming microcontrollers (ESP32, STM32, AVR, etc.).
+                    -Developing firmware for embedded devices.
+                    -Integrating hardware components with software for seamless operation.
+                    -Optimizing power consumption and system performance.
+                    I build embedded solutions that power the next generation of smart devices.`,
+        href: "https://github.com/Md-tuhin-Islam"
+    },
+    {
+        num: "06",
+        title: "Blockchain Development",
+        description: `I develop secure and decentralized blockchain solutions for various applications. My services include:
+                    -Creating smart contracts using Solidity and Web3.
+                    -Developing decentralized applications (DApps) on Ethereum, Binance Smart Chain, etc.
+                    -Implementing blockchain-based security solutions.
+                    -Ensuring transparency and security in digital transactions.`,
+        href: "https://github.com/Md-tuhin-Islam"
+    },
+    {
+        num: "07",
+        title: "AR & VR Development",
+        description: `I design immersive Augmented Reality (AR) and Virtual Reality (VR) applications. My services include:
+                    -Creating interactive AR experiences for mobile and web.
+                    -Developing VR environments for gaming, training, and simulations.
+                    -Using Unity, Unreal Engine, and WebXR for development.
+                    -Enhancing user engagement through immersive technology.`,
+        href: "https://github.com/Md-tuhin-Islam"
+    },
+    {
+        num: "08",
+        title: "Cloud Engineering",
+        description: `I specialize in cloud solutions for scalable and secure infrastructure. My services include:
+                        
+                        -Deploying and managing cloud-based applications (AWS, Azure).
+                        -Setting up cloud storage, databases, and networking solutions.
+                        -Implementing security best practices for cloud environments.
+                        -Optimizing performance and cost efficiency in cloud operations.`,
         href: "https://github.com/Md-tuhin-Islam"
     }
 ];

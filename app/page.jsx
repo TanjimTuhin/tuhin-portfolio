@@ -17,13 +17,15 @@ const Home = () => {
         xl:pt-8 xl:pb-24">
           {/* text */}
           <div className="text-center xl:text-left order-2 xl:order-none">
-            <span className="text-xl">Machine Learning Engineer</span>
+            <span className="text-xl">Network Engineer</span>
             <h1 className="h1">
               Hello I&apos;m <br /><span className="text-accent">Md. Tanjim Mahmud Tuhin</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
-              I excel at crafting digital experiences and I am proficient 
-              in verious programming languages and technologies
+            I’m an aspiring Network Engineer passionate about building secure, 
+            high-performance network infrastructures. Currently in the learning phase, 
+            I’m deep-diving into network protocols, cybersecurity, and system administration to 
+            strengthen my expertise.
             </p>
             {/* btn and socials */}
             <div className="flex flex-col xl:flex-row items-center gap-8">
