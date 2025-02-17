@@ -113,6 +113,41 @@ const experience = {
   ],
 };
 
+// Interested In
+const interestedin = {
+  icon: "/assets/resume/cap.svg",
+  title: "Interested In",
+  description:
+    "I am interested in many areas, as knowledge has no boundaries. My favorite scientist and innovator, Nikola Tesla said - It’s not the love you make; it’s the love you give.",
+  items: [
+    { 
+      duration: "Research Area",
+      //institution: "Military Institute of Science & Technology",
+      degree: " IIOT in cybersecurity________ \n Quantum Cryptography____ \n Quantum Computing_______\n Quantum neural network___ \n Quantum Machine Learning ",
+      
+      
+    },
+    { 
+      duration: "Sports ",
+      //institution: "Rajshahi Govt. City College, Rajshahi",
+      degree: "Formula 1 (F1) _______________\n  Basketball ________________ \n MMA ____________________ \n Swimming______________",
+      
+    },
+    { 
+      duration: "Master's Subject",
+      degree:"CyberSecurity_______________",
+      institution: " IoT and Cybersecurity*, ---------- \n Cybersecurity and Networking,---- \n Network Engineering, -------------\n Automation and Robotics, -------\n ",
+      
+   },
+    { 
+      duration: "Field ",
+      //institution: "Rajshahi Govt. City College, Rajshahi",
+      degree: "Cyber Security ______________\n Networking ________________ \n IOT & IIOT ________________\n Embedded System ________\n AR VR ___________________",
+      
+    },
+  ],
+};
+
 // Education data
 const education = {
   icon: "/assets/resume/cap.svg",
@@ -237,6 +272,7 @@ const Resume = () => {
             <TabsTrigger value="experience">Experience</TabsTrigger>
             <TabsTrigger value="education">Education</TabsTrigger>
             <TabsTrigger value="skills">Skills</TabsTrigger>
+            <TabsTrigger value="Interested In">Intested In</TabsTrigger>
             <TabsTrigger value="about">About Me</TabsTrigger>
           </TabsList>
 
@@ -335,6 +371,36 @@ const Resume = () => {
                                 </ul>
                             </div>
                         </TabsContent>
+                        {/* Interested In */}
+                        <TabsContent value="Interested In" className="w-full max-w-[1200px] mx-auto">
+  <div className="flex flex-col gap-[30px] text-center xl:text-left">
+    <h3 className="text-4xl font-bold">{interestedin.title}</h3>
+    <p className="max-w-[850px] text-white/60 mx-auto xl:mx-0">{interestedin.description}</p>
+    <ScrollArea className="h-[480px] lg:h-[600px">
+      <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
+        {interestedin.items.map((item, index) => {
+          return (
+            <li 
+  key={index} 
+  className="bg-[#232329] h-[184px] lg:h-[220px] py-6 px-10 rounded-xl
+  flex flex-col justify-center items-center lg:items-start gap-0.5 masters-subject"
+>
+  <span className="text-accent">{item.duration}</span>
+  <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
+    {item.degree}
+  </h3>
+  <div className="flex items-center gap-0">
+    <span className="w-[6px] h-[6px] rounded-full bd-accent"></span>
+    <p className="text-white/60">{item.institution}</p>
+  </div>
+</li>
+          );
+        })}
+      </ul>
+    </ScrollArea>
+  </div>
+</TabsContent>
+    
                         {/* About */}
                         <TabsContent value="about" className="w-full text-center xl:text-left">
                             <div className="flex flex-col gap-[30px]">
