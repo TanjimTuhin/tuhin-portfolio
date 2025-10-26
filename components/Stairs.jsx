@@ -1,4 +1,7 @@
+"use client";
+
 import {motion} from "framer-motion";
+// ...rest of the file
 
 //variants
 const stairAnimation = {

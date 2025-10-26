@@ -45,8 +45,8 @@ module.exports = {
   				foreground: 'hsl(var(--muted-foreground))'
   			},
   			accent: {
-  				DEFAULT: '#00ff99',
-				hover: '#00e187',
+  				DEFAULT: '#9900ffff',
+				hover: '#5e00b6ff',
   				foreground: 'hsl(var(--accent-foreground))'
   			},
   			destructive: {

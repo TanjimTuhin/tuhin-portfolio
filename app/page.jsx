@@ -1,12 +1,11 @@
-
 import { Button } from "@/components/ui/button";
-import { FiDownload } from "react-icons/fi" 
-
+import { FiDownload } from "react-icons/fi";
 
 //components
 import Social from "@/components/Social";
 import Photo from "@/components/Photo";
 import Stats from "@/components/Stats";
+import TypingEffect from "@/components/TypingEffect";
 
 const Home = () => {
 
@@ -17,14 +16,14 @@ const Home = () => {
         xl:pt-8 xl:pb-24">
           {/* text */}
           <div className="text-center xl:text-left order-2 xl:order-none">
-            <span className="text-xl">Network Engineer</span>
+            <TypingEffect />
             <h1 className="h1">
               Hello I&apos;m <br /><span className="text-accent">Md. Tanjim Mahmud Tuhin</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
-            I’m an aspiring Network Engineer passionate about building secure, 
+            I'm an aspiring Network Engineer passionate about building secure, 
             high-performance network infrastructures. Currently in the learning phase, 
-            I’m deep-diving into network protocols, cybersecurity, and system administration to 
+            I'm deep-diving into network protocols, cybersecurity, and system administration to 
             strengthen my expertise.
             </p>
             {/* btn and socials */}
