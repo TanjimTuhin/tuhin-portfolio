@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   FaHtml5, FaCss3, FaJs, FaReact, FaFigma, FaNodeJs, FaPython,
-  FaMicrochip, FaLinux, FaJava, FaBriefcase, FaGraduationCap, FaBrain,FaBookOpen // Icon for Research
+  FaMicrochip, FaLinux, FaJava, FaBriefcase, FaGraduationCap, FaBrain, FaBookOpen
 } from "react-icons/fa";
 import {
   SiTailwindcss, SiNextdotjs, SiFlutter, SiCplusplus, SiOracle,
@@ -14,7 +14,7 @@ import {
 // Components
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"; // Keep ScrollArea import for Experience/Education
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 // --- DATA OBJECTS ---
 
@@ -69,8 +69,8 @@ const education = {
   items: [
     { institution: "Daffodil International University (DIU)", degree: "Masters in Cybersecurity", duration: "Jan 2025 - present" },
     { institution: "Military Institute of Science and Technology (MIST)", degree: "BSc in EECE", duration: "Feb 2020 - March 2024" },
-    { institution: "Rajshahi Govt. City College", degree: "HSC", duration: "2018 - 2020" }, // REMEMBER TO UPDATE THIS
-    { institution: "Daud Public School and College", degree: "SSC", duration: "2016 - 2018" }, // REMEMBER TO UPDATE THIS
+    { institution: "Rajshahi Govt. City College", degree: "HSC", duration: "2018 - 2020" },
+    { institution: "Daud Public School and College", degree: "SSC", duration: "2016 - 2018" },
   ],
 };
 
@@ -95,7 +95,7 @@ const interestedin = {
   icon: <FaBrain />,
   title: "Interested In",
   description:
-    "I am interested in many areas, as knowledge has no boundaries. My favorite scientist and innovator, Nikola Tesla said - It’s not the love you make; it’s the love you give.",
+    "I am interested in many areas, as knowledge has no boundaries. My favorite scientist and innovator, Nikola Tesla said - It's not the love you make; it's the love you give.",
   items: [
     {
       category: "Research Area",
@@ -106,7 +106,7 @@ const interestedin = {
     },
     {
       category: "Sports",
-      list: ["Formula 1 (F1)", "Basketball", "MMA", "Cycling","Swimming"],
+      list: ["Formula 1 (F1)", "Basketball", "MMA", "Cycling", "Swimming"],
     },
     {
       category: "Master's Subject Focus",
@@ -125,208 +125,410 @@ const interestedin = {
   ],
 };
 
-// NEW: Research & Publications data
+// Research & Publications data
 const research = {
-    icon: <FaBookOpen />, // New Icon
-    title: "Research & Publications",
-    description: "My contributions to academic research.",
-    items: [
-        {
-            type: "Undergraduate Thesis",
-            title: "A Comparative Study of Inorganic Lead Halide Perovskites",
-            points: [
-                "Analyzed electrical, optical and mechanical properties of perovskite materials.",
-                "Published research findings with IEEE conference paper." // Consider adding link if available
-            ],
-            // Optional: Add link property if you have one
-            // link: "IEEE_LINK_HERE"
-        },
-        {
-            type: "IEEE Publication",
-            title: "A Generalizing Violence Detection with a New Near-Real-World Violence Dataset",
-            points: [
-                "Co-authored research paper on machine learning applications for security systems.",
-                "Developed novel dataset for improving violence detection algorithms."
-            ],
-            // Optional: Add link property
-            // link: "IEEE_LINK_HERE"
-        }
-    ]
+  icon: <FaBookOpen />,
+  title: "Research & Publications",
+  description: "My contributions to academic research.",
+  items: [
+    {
+      type: "Undergraduate Thesis",
+      title: "A Comparative Study of Inorganic Lead Halide Perovskites",
+      points: [
+        "Analyzed electrical, optical and mechanical properties of perovskite materials.",
+        "Published research findings with IEEE conference paper."
+      ],
+    },
+    {
+      type: "IEEE Publication",
+      title: "A Generalizing Violence Detection with a New Near-Real-World Violence Dataset",
+      points: [
+        "Co-authored research paper on machine learning applications for security systems.",
+        "Developed novel dataset for improving violence detection algorithms."
+      ],
+    }
+  ]
+};
+
+// Animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 100
+    }
+  }
 };
 
 // --- COMPONENT ---
 const Resume = () => {
   const [openedExperienceIndex, setOpenedExperienceIndex] = useState(null);
+  const [expandedEducation, setExpandedEducation] = useState(null);
+  const [expandedInterest, setExpandedInterest] = useState(null);
+  const [expandedResearch, setExpandedResearch] = useState(null);
 
   return (
     <motion.div
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { delay: 1, duration: 0.4, ease: "easeIn" } }}
-      className="min-h-[80vh] flex items-center justify-center py-12 xl:py-0"
+      animate={{ opacity: 1, transition: { delay: 0.5, duration: 0.4, ease: "easeIn" } }}
+      className="min-h-[80vh] flex items-center justify-center py-6 sm:py-8 xl:py-12 px-4 sm:px-6"
     >
-      <div className="container mx-auto">
-        <Tabs defaultValue="experience" className="flex flex-col xl:flex-row gap-[60px]">
+      <div className="container mx-auto max-w-7xl">
+        <Tabs defaultValue="experience" className="flex flex-col xl:flex-row gap-8 xl:gap-[80px]">
           {/* Tab Buttons */}
-          <TabsList className="flex flex-col w-full max-w-[380px] mx-auto xl:mx-0 gap-6">
-            <TabsTrigger value="experience">Experience</TabsTrigger>
-            <TabsTrigger value="education">Education</TabsTrigger>
-            <TabsTrigger value="skills">Skills</TabsTrigger>
-            <TabsTrigger value="interestedin">Interested In</TabsTrigger>
-            <TabsTrigger value="research">Research</TabsTrigger>
-            <TabsTrigger value="about">About me</TabsTrigger>
-          </TabsList>
+          <motion.div
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.7, duration: 0.5 }}
+          >
+            <TabsList className="flex flex-col w-full max-w-full sm:max-w-[380px] mx-auto xl:mx-10 gap-3 sm:gap-6">
+              <TabsTrigger value="experience" className="text-sm sm:text-base">Experience</TabsTrigger>
+              <TabsTrigger value="education" className="text-sm sm:text-base">Education</TabsTrigger>
+              <TabsTrigger value="skills" className="text-sm sm:text-base">Skills</TabsTrigger>
+              <TabsTrigger value="interestedin" className="text-sm sm:text-base">Interested In</TabsTrigger>
+              <TabsTrigger value="research" className="text-sm sm:text-base">Research</TabsTrigger>
+              <TabsTrigger value="about" className="text-sm sm:text-base">About me</TabsTrigger>
+            </TabsList>
+          </motion.div>
 
           {/* Tab Content Area */}
-          <div className="min-h-[70vh] w-full"> {/* Adjusted min-height for potentially longer content */}
+          <div className="min-h-[10vh] w-full">
 
             {/* Experience Content */}
             <TabsContent value="experience" className="w-full">
-              <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                <h3 className="text-4xl font-bold">{experience.title}</h3>
-                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">{experience.description}</p>
-                <ScrollArea className="h-[400px]"> {/* Keep ScrollArea for experience if it can get long */}
-                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px] pr-4"> {/* Added padding for scrollbar */}
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={containerVariants}
+                className="flex flex-col gap-6 sm:gap-[30px] text-center xl:text-left"
+              >
+                <motion.h3 variants={itemVariants} className="text-2xl sm:text-3xl xl:text-4xl font-bold">{experience.title}</motion.h3>
+                <motion.p variants={itemVariants} className="max-w-[600px] text-white/60 mx-auto xl:mx-0 text-sm sm:text-base">{experience.description}</motion.p>
+                <ScrollArea className="h-auto max-h-[500px] sm:max-h-[600px]">
+                  <motion.ul variants={containerVariants} className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-[30px] pr-2 sm:pr-4">
                     {experience.items.map((item, index) => (
-                      <li key={index} className="bg-[#27272c] rounded-xl overflow-hidden">
-                        <motion.div whileHover={{ scale: 1.03, boxShadow: "0px 8px 15px rgba(0, 255, 153, 0.15)" }} transition={{ type: "spring", stiffness: 300 }} onClick={() => setOpenedExperienceIndex(openedExperienceIndex === index ? null : index)} className="p-6 cursor-pointer">
-                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                            <h3 className="text-xl font-bold text-accent text-left">{item.position}</h3>
-                            <span className="bg-primary text-white text-sm py-1 px-3 rounded-full w-fit">{item.duration}</span>
+                      <motion.li key={index} variants={itemVariants} className="bg-[#27272c] rounded-xl overflow-hidden">
+                        <motion.div
+                          whileHover={{ scale: 1.03, boxShadow: "0px 8px 15px rgba(0, 255, 153, 0.15)" }}
+                          transition={{ type: "spring", stiffness: 300 }}
+                          onClick={() => setOpenedExperienceIndex(openedExperienceIndex === index ? null : index)}
+                          className="p-4 sm:p-6 cursor-pointer"
+                        >
+                          <div className="flex flex-col gap-2">
+                            <h3 className="text-lg sm:text-xl font-bold text-accent text-left">{item.position}</h3>
+                            <span className="bg-primary text-white text-xs sm:text-sm py-1 px-3 rounded-full w-fit">{item.duration}</span>
+                            <p className="text-white/80 text-sm sm:text-base text-left">{item.company}</p>
                           </div>
-                          <p className="text-white/80 mt-2 text-left">{item.company}</p>
                         </motion.div>
-                        <motion.div initial={{ opacity: 0, height: 0, marginTop: 0 }} animate={{ opacity: openedExperienceIndex === index ? 1 : 0, height: openedExperienceIndex === index ? "auto" : 0, marginTop: openedExperienceIndex === index ? "0px" : "0px", }} transition={{ duration: 0.3, ease: "easeInOut" }} className="overflow-hidden bg-primary/50">
-                          <ul className="list-disc pl-10 pr-6 py-4 space-y-2">
-                            {item.details.map((detail, detailIndex) => (
-                              <li key={detailIndex} className="text-white/70 text-sm text-left">{detail}</li>
-                            ))}
-                          </ul>
-                        </motion.div>
-                      </li>
+                        <AnimatePresence>
+                          {openedExperienceIndex === index && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: "auto" }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.3, ease: "easeInOut" }}
+                              className="overflow-hidden bg-primary/50"
+                            >
+                              <ul className="list-disc pl-6 sm:pl-10 pr-4 sm:pr-6 py-3 sm:py-4 space-y-2">
+                                {item.details.map((detail, detailIndex) => (
+                                  <motion.li
+                                    key={detailIndex}
+                                    initial={{ x: -20, opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    transition={{ delay: detailIndex * 0.1 }}
+                                    className="text-white/70 text-xs sm:text-sm text-left"
+                                  >
+                                    {detail}
+                                  </motion.li>
+                                ))}
+                              </ul>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </motion.li>
                     ))}
-                  </ul>
+                  </motion.ul>
                   <ScrollBar />
                 </ScrollArea>
-              </div>
+              </motion.div>
             </TabsContent>
 
             {/* Education Content */}
             <TabsContent value="education" className="w-full">
-               <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                <h3 className="text-4xl font-bold">{education.title}</h3>
-                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">{education.description}</p>
-                {/* ScrollArea potentially kept if many items, but removed fixed height */}
-                <ScrollArea className="max-h-[400px]"> {/* Changed to max-h */}
-                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px] pr-4"> {/* Added padding */}
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={containerVariants}
+                className="flex flex-col gap-6 sm:gap-[30px] text-center xl:text-left"
+              >
+                <motion.h3 variants={itemVariants} className="text-2xl sm:text-3xl xl:text-4xl font-bold">{education.title}</motion.h3>
+                <motion.p variants={itemVariants} className="max-w-[600px] text-white/60 mx-auto xl:mx-0 text-sm sm:text-base">{education.description}</motion.p>
+                <ScrollArea className="h-auto max-h-[500px]">
+                  <motion.ul variants={containerVariants} className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-[30px] pr-2 sm:pr-4">
                     {education.items.sort((a, b) => b.duration.localeCompare(a.duration)).map((item, index) => (
-                        <li key={index} className="bg-[#27272c] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1">
-                          <span className="text-accent text-lg">{item.duration}</span>
-                          <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">{item.degree}</h3>
-                          <div className="flex items-center gap-3">
-                            <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
-                            <p className="text-white/60">{item.institution}</p>
-                          </div>
-                        </li>
+                      <motion.li
+                        key={index}
+                        variants={itemVariants}
+                        whileHover={{
+                          scale: 1.05,
+                          boxShadow: "0px 10px 20px rgba(168, 85, 247, 0.2)",
+                          transition: { type: "spring", stiffness: 300 }
+                        }}
+                        onClick={() => setExpandedEducation(expandedEducation === index ? null : index)}
+                        className="bg-[#27272c] min-h-[160px] sm:h-auto py-4 sm:py-6 px-6 sm:px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1 cursor-pointer relative overflow-hidden"
+                      >
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-accent/10"
+                          initial={{ x: "-100%" }}
+                          whileHover={{ x: "100%" }}
+                          transition={{ duration: 0.6 }}
+                        />
+                        <span className="text-accent text-base sm:text-lg relative z-10">{item.duration}</span>
+                        <h3 className="text-base sm:text-xl max-w-[260px] text-center lg:text-left relative z-10">{item.degree}</h3>
+                        <div className="flex items-center gap-3 relative z-10">
+                          <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
+                          <p className="text-white/60 text-sm sm:text-base">{item.institution}</p>
+                        </div>
+                        <AnimatePresence>
+                          {expandedEducation === index && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: "auto" }}
+                              exit={{ opacity: 0, height: 0 }}
+                              className="mt-2 relative z-10"
+                            >
+                              <p className="text-white/50 text-xs sm:text-sm italic">Click to collapse</p>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </motion.li>
                     ))}
-                  </ul>
+                  </motion.ul>
                   <ScrollBar />
                 </ScrollArea>
-              </div>
+              </motion.div>
             </TabsContent>
 
-            {/* Skills Content - REMOVED ScrollArea and fixed height */}
+            {/* Skills Content */}
             <TabsContent value="skills" className="w-full h-full">
-              <div className="flex flex-col gap-[30px]">
-                <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                  <h3 className="text-4xl font-bold">{skills.title}</h3>
-                  <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">{skills.description}</p>
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={containerVariants}
+                className="flex flex-col gap-6 sm:gap-[30px]"
+              >
+                <div className="flex flex-col gap-4 sm:gap-[30px] text-center xl:text-left">
+                  <motion.h3 variants={itemVariants} className="text-2xl sm:text-3xl xl:text-4xl font-bold">{skills.title}</motion.h3>
+                  <motion.p variants={itemVariants} className="max-w-[600px] text-white/60 mx-auto xl:mx-0 text-sm sm:text-base">{skills.description}</motion.p>
                 </div>
-                {/* Removed ScrollArea wrapper */}
-                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
+                <motion.ul variants={containerVariants} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4 xl:gap-[30px]">
                   {skills.skillList.map((skill, index) => (
-                    <li key={index}>
+                    <motion.li key={index} variants={itemVariants}>
                       <TooltipProvider delayDuration={100}>
                         <Tooltip>
-                          <TooltipTrigger className="w-full h-[150px] bg-[#27272c] rounded-xl flex justify-center items-center group">
-                            <div className="text-6xl group-hover:text-accent transition-all duration-300">{skill.icon}</div>
+                          <TooltipTrigger asChild>
+                            <motion.div
+                              whileHover={{
+                                scale: 1.1,
+                                rotate: [0, -5, 5, 0],
+                                boxShadow: "0px 10px 30px rgba(0, 255, 153, 0.3)"
+                              }}
+                              transition={{ type: "spring", stiffness: 300 }}
+                              className="w-full h-[100px] sm:h-[120px] xl:h-[150px] bg-[#27272c] rounded-xl flex justify-center items-center group cursor-pointer relative overflow-hidden"
+                            >
+                              <motion.div
+                                className="absolute inset-0 bg-gradient-to-br from-accent/20 to-purple-500/20"
+                                initial={{ opacity: 0 }}
+                                whileHover={{ opacity: 1 }}
+                                transition={{ duration: 0.3 }}
+                              />
+                              <div className="text-4xl sm:text-5xl xl:text-6xl group-hover:text-accent transition-all duration-300 relative z-10">{skill.icon}</div>
+                            </motion.div>
                           </TooltipTrigger>
-                          <TooltipContent><p className="capitalize">{skill.name}</p></TooltipContent>
+                          <TooltipContent><p className="capitalize text-sm">{skill.name}</p></TooltipContent>
                         </Tooltip>
                       </TooltipProvider>
-                    </li>
+                    </motion.li>
                   ))}
-                </ul>
-              </div>
+                </motion.ul>
+              </motion.div>
             </TabsContent>
 
-            {/* Interested In Content - Changed Layout to Grid */}
+            {/* Interested In Content */}
             <TabsContent value="interestedin" className="w-full">
-              <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                <h3 className="text-4xl font-bold">{interestedin.title}</h3>
-                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={containerVariants}
+                className="flex flex-col gap-6 sm:gap-[30px] text-center xl:text-left"
+              >
+                <motion.h3 variants={itemVariants} className="text-2xl sm:text-3xl xl:text-4xl font-bold">{interestedin.title}</motion.h3>
+                <motion.p variants={itemVariants} className="max-w-[600px] text-white/60 mx-auto xl:mx-0 text-sm sm:text-base">
                   {interestedin.description}
-                </p>
-                {/* Changed to grid layout */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
+                </motion.p>
+                <motion.div variants={containerVariants} className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 mt-2 sm:mt-6">
                   {interestedin.items.map((categoryItem, index) => (
-                    <div key={index} className="bg-[#27272c] p-6 rounded-xl flex flex-col gap-4">
+                    <motion.div
+                      key={index}
+                      variants={itemVariants}
+                      whileHover={{
+                        scale: 1.03,
+                        boxShadow: "0px 10px 25px rgba(0, 255, 153, 0.2)"
+                      }}
+                      onClick={() => setExpandedInterest(expandedInterest === index ? null : index)}
+                      className="bg-[#27272c] p-4 sm:p-6 rounded-xl flex flex-col gap-3 sm:gap-4 cursor-pointer relative overflow-hidden"
+                    >
+                      <motion.div
+                        className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent to-purple-500"
+                        initial={{ scaleX: 0 }}
+                        whileHover={{ scaleX: 1 }}
+                        transition={{ duration: 0.3 }}
+                      />
                       <div className="flex items-center gap-3">
-                        {interestedin.icon && <span className="text-accent text-2xl">{interestedin.icon}</span>}
-                        <h4 className="text-2xl font-semibold text-accent">{categoryItem.category}</h4>
+                        {interestedin.icon && <span className="text-accent text-xl sm:text-2xl">{interestedin.icon}</span>}
+                        <h4 className="text-lg sm:text-2xl font-semibold text-accent">{categoryItem.category}</h4>
                       </div>
-                      <ul className="list-disc pl-8 space-y-2"> {/* Indent list */}
-                        {categoryItem.list.map((item, itemIndex) => (
-                          <li key={itemIndex} className="text-white/80 text-lg">{item}</li>
-                        ))}
-                      </ul>
-                    </div>
+                      <AnimatePresence>
+                        <motion.ul
+                          initial={{ opacity: 0.7 }}
+                          animate={{ opacity: expandedInterest === index ? 1 : 0.7 }}
+                          className="list-disc pl-6 sm:pl-8 space-y-1 sm:space-y-2"
+                        >
+                          {categoryItem.list.map((item, itemIndex) => (
+                            <motion.li
+                              key={itemIndex}
+                              initial={{ x: -10, opacity: 0 }}
+                              animate={{ x: 0, opacity: 1 }}
+                              transition={{ delay: itemIndex * 0.05 }}
+                              whileHover={{ x: 5, color: "#00ff99" }}
+                              className="text-white/80 text-sm sm:text-lg transition-colors"
+                            >
+                              {item}
+                            </motion.li>
+                          ))}
+                        </motion.ul>
+                      </AnimatePresence>
+                    </motion.div>
                   ))}
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             </TabsContent>
-                  {/* NEW: Research Content */}
+
+            {/* Research Content */}
             <TabsContent value="research" className="w-full">
-                <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                    <h3 className="text-4xl font-bold">{research.title}</h3>
-                    <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">{research.description}</p>
-                    {/* Grid for research items */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
-                        {research.items.map((item, index) => (
-                            <div key={index} className="bg-[#27272c] p-6 rounded-xl flex flex-col gap-3 border border-white/10">
-                                <span className="text-accent text-lg font-medium">{item.type}</span>
-                                <h4 className="text-xl font-semibold text-white mb-2">{item.title}</h4>
-                                <ul className="list-disc pl-5 space-y-1">
-                                    {item.points.map((point, pointIndex) => (
-                                        <li key={pointIndex} className="text-white/70 text-sm">{point}</li>
-                                    ))}
-                                </ul>
-                                {/* Optional Link */}
-                                {item.link && (
-                                    <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline text-sm mt-3 self-start">
-                                        View Publication
-                                    </a>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </TabsContent>
-            {/* About Content - REMOVED ScrollArea and fixed height for info */}
-            <TabsContent value="about" className="w-full text-center xl:text-left">
-              <div className="flex flex-col gap-[30px]">
-                <h3 className="text-4xl font-bold">{about.title}</h3>
-                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">{about.description}</p>
-                {/* Removed ScrollArea wrapper */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
-                  {about.info.map((item, index) => (
-                    <div key={index} className="bg-[#27272c] p-4 rounded-lg border-l-4 border-purple-500">
-                      <span className="text-white/60 text-sm">{item.fieldName}</span>
-                      <p className="text-xl font-medium truncate">{item.fieldValue}</p>
-                    </div>
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={containerVariants}
+                className="flex flex-col gap-6 sm:gap-[30px] text-center xl:text-left"
+              >
+                <motion.h3 variants={itemVariants} className="text-2xl sm:text-3xl xl:text-4xl font-bold">{research.title}</motion.h3>
+                <motion.p variants={itemVariants} className="max-w-[600px] text-white/60 mx-auto xl:mx-0 text-sm sm:text-base">{research.description}</motion.p>
+                <motion.div variants={containerVariants} className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 mt-2 sm:mt-6">
+                  {research.items.map((item, index) => (
+                    <motion.div
+                      key={index}
+                      variants={itemVariants}
+                      whileHover={{
+                        scale: 1.03,
+                        boxShadow: "0px 15px 30px rgba(168, 85, 247, 0.3)",
+                        borderColor: "rgba(0, 255, 153, 0.5)"
+                      }}
+                      onClick={() => setExpandedResearch(expandedResearch === index ? null : index)}
+                      className="bg-[#27272c] p-4 sm:p-6 rounded-xl flex flex-col gap-3 border border-white/10 cursor-pointer relative overflow-hidden transition-all duration-300"
+                    >
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-accent/5"
+                        initial={{ opacity: 0 }}
+                        whileHover={{ opacity: 1 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                      <span className="text-accent text-base sm:text-lg font-medium relative z-10">{item.type}</span>
+                      <h4 className="text-lg sm:text-xl font-semibold text-white mb-2 relative z-10">{item.title}</h4>
+                      <AnimatePresence>
+                        <motion.ul
+                          initial={{ opacity: 0.7 }}
+                          animate={{ opacity: expandedResearch === index ? 1 : 0.7 }}
+                          className="list-disc pl-5 space-y-1 relative z-10"
+                        >
+                          {item.points.map((point, pointIndex) => (
+                            <motion.li
+                              key={pointIndex}
+                              initial={{ x: -10, opacity: 0 }}
+                              animate={{ x: 0, opacity: 1 }}
+                              transition={{ delay: pointIndex * 0.1 }}
+                              className="text-white/70 text-xs sm:text-sm"
+                            >
+                              {point}
+                            </motion.li>
+                          ))}
+                        </motion.ul>
+                      </AnimatePresence>
+                      {item.link && (
+                        <motion.a
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ x: 5 }}
+                          className="text-accent hover:underline text-xs sm:text-sm mt-3 self-start relative z-10"
+                        >
+                          View Publication →
+                        </motion.a>
+                      )}
+                    </motion.div>
                   ))}
-                </div>
-                {/* REMOVED Simplified Interests Section */}
-              </div>
+                </motion.div>
+              </motion.div>
+            </TabsContent>
+
+            {/* About Content */}
+            <TabsContent value="about" className="w-full text-center xl:text-left">
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={containerVariants}
+                className="flex flex-col gap-6 sm:gap-[30px]"
+              >
+                <motion.h3 variants={itemVariants} className="text-2xl sm:text-3xl xl:text-4xl font-bold">{about.title}</motion.h3>
+                <motion.p variants={itemVariants} className="max-w-[600px] text-white/60 mx-auto xl:mx-0 text-sm sm:text-base">{about.description}</motion.p>
+                <motion.div variants={containerVariants} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                  {about.info.map((item, index) => (
+                    <motion.div
+                      key={index}
+                      variants={itemVariants}
+                      whileHover={{
+                        scale: 1.05,
+                        borderColor: "#a855f7",
+                        boxShadow: "0px 8px 20px rgba(168, 85, 247, 0.3)"
+                      }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                      className="bg-[#27272c] p-3 sm:p-4 rounded-lg border-l-4 border-purple-500 cursor-pointer relative overflow-hidden group"
+                    >
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-accent/10"
+                        initial={{ x: "-100%" }}
+                        whileHover={{ x: "100%" }}
+                        transition={{ duration: 0.5 }}
+                      />
+                      <span className="text-white/60 text-xs sm:text-sm relative z-10">{item.fieldName}</span>
+                      <p className="text-base sm:text-xl font-medium truncate relative z-10 group-hover:text-accent transition-colors">{item.fieldValue}</p>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </motion.div>
             </TabsContent>
           </div>
         </Tabs>
@@ -336,4 +538,3 @@ const Resume = () => {
 };
 
 export default Resume;
-
