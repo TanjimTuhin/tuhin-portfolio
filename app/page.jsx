@@ -21,10 +21,9 @@ const Home = () => {
               Hello I&apos;m <br /><span className="text-accent">Md. Tanjim Mahmud Tuhin</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
-            I'm an aspiring Network Engineer passionate about building secure, 
-            high-performance network infrastructures. Currently in the learning phase, 
-            I'm deep-diving into network protocols, cybersecurity, and system administration to 
-            strengthen my expertise.
+            I'm not passionate about anything also I don't seek knowledge. I seek wisdom.I know unity 
+            I know pcb I know firmware development I know quantum physics 
+            What i don't know u can't even know
             </p>
             {/* btn and socials */}
             <div className="flex flex-col xl:flex-row items-center gap-8">

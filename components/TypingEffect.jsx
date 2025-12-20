@@ -7,6 +7,8 @@ const TypingEffect = () => {
     "Robotics Engineer.....",
     "Cybersecurity Researcher.....",
     "Network Enthusiast.....",
+    "Game Developer.....",
+    "Crypto Trader...."
   ];
 
   const [currentProfessionIndex, setCurrentProfessionIndex] = useState(0);
