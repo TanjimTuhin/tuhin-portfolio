@@ -25,10 +25,10 @@ const Home = () => {
 I do not hunt knowledge.
 I pursue wisdom.
 
-I know Unity.
-I know PCB design.
-I know firmware development.
-I know quantum physics.
+I know game development.
+I know PCB design, mechanical design and 3D printing.
+I know firmware development, embedded systems and robotics.
+I love quantum physics.
 
 What I do not know
 is beyond what you could ever reach.
@@ -39,8 +39,7 @@ Seeking knowledge is my work
 it is the only thing I do.
 
 In the end,
-I remain devoted
-to what I am becoming.</p>
+I am in love with a fairytale even though it hurts.</p>
             {/* btn and socials */}
             <div className="flex flex-col xl:flex-row items-center gap-8">
               <a href="/assets/cv.pdf" download>
