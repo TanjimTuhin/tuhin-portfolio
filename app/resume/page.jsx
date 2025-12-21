@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FaHtml5, FaCss3, FaJs, FaReact, FaFigma, FaNodeJs, FaPython,
-  FaMicrochip, FaLinux, FaJava, FaBriefcase, FaGraduationCap, FaBrain, FaBookOpen
+  FaMicrochip, FaLinux, FaJava, FaBriefcase, FaGraduationCap, FaBrain, FaBookOpen, FaTrophy, FaCog
 } from "react-icons/fa";
 import {
   SiTailwindcss, SiNextdotjs, SiFlutter, SiCplusplus, SiOracle,
@@ -54,6 +54,14 @@ const experience = {
         "Developed firmware using C/C++, Arduino, ESP-32, STM-32, Raspberry-Pi.",
         "Optimized network configurations using Cisco Packet Tracer.",
         "Collaborated on deploying 5G network prototypes.",
+      ],
+    },
+    {
+      company: "RBD SOFTWARE & TECHNOLOGY LIMITED", position: "Unity Developer", duration: "September 2024 - February 2025",
+      details: [
+        "Developed and maintained Unity-based applications and games.",
+        "Collaborated with cross-functional teams to deliver high-quality software solutions.",
+        "Implemented game mechanics, UI systems, and performance optimizations.",
       ],
     },
     { company: "BTRC", position: "Internship", duration: "Feb 2023 - Feb 2023", details: ["Gained insight into national telecommunication regulations.", "Assisted with monitoring spectrum usage and compliance."] },
@@ -150,6 +158,129 @@ const research = {
   ]
 };
 
+// Achievements data
+const achievements = {
+  icon: <FaTrophy />,
+  title: "My Achievements",
+  description: "Click on any achievement to see more details.",
+  subsections: [
+    {
+      name: "Game",
+      items: [
+        {
+          title: "PUBG",
+          highestPosition: "Top 10",
+          comment: "Achieved consistent top 10 rankings in competitive matches."
+        },
+        {
+          title: "Need for Speed",
+          highestPosition: "1st Place",
+          comment: "Won multiple racing championships and set track records."
+        },
+        {
+          title: "Call of Duty",
+          highestPosition: "Top 5",
+          comment: "Maintained high K/D ratio and strategic gameplay excellence."
+        }
+      ]
+    },
+    {
+      name: "Academic",
+      items: [
+        {
+          title: "Academic Excellence",
+          highestPosition: "Dean's List (DIU)",
+          comment: "Maintained outstanding academic performance throughout studies."
+        }
+      ]
+    },
+    {
+      name: "Brain Game",
+      items: [
+        {
+          title: "Chess Tournament",
+          highestPosition: "2nd Place",
+          comment: "Competed in regional chess championships."
+        }
+      ]
+    },
+    {
+      name: "Competition",
+      items: [
+        {
+          title: "Hackathon Winner",
+          highestPosition: "1st Place",
+          comment: "Led team to victory in intra university coding competition."
+        }
+      ]
+    },
+    {
+      name: "Miscellaneous",
+      items: [
+        {
+          title: "Try Hack me",
+          highestPosition: "Top 2% in the world",
+          comment: "Active contributor to multiple open source projects."
+        }
+      ]
+    }
+  ]
+};
+
+// Familiar With data
+const familiarWith = {
+  icon: <FaCog />,
+  title: "Familiar With",
+  description: "Technologies and domains I am familiar with across different sectors.",
+  subsections: [
+    {
+      name: "Electrical",
+      items: [
+        { title: "PCB Design", description: "Printed Circuit Board design and layout." },
+        { title: "VLSI", description: "Very Large Scale Integration design and implementation." },
+        { title: "Satellite Communication", description: "Satellite communication systems and protocols." },
+        { title: "Microprocessor", description: "Microprocessor architecture and programming." },
+        { title: "Networking", description: "Network design, configuration, and management." }
+      ]
+    },
+    {
+      name: "Mechanical",
+      items: [
+        { title: "SolidWorks", description: "3D CAD modeling and mechanical design." }
+      ]
+    },
+    {
+      name: "Robotics",
+      items: [
+        { title: "Firmware Development", description: "Low-level firmware programming for robotic systems." },
+        { title: "Inverse Kinematics", description: "Mathematical modeling and control of robotic manipulators." },
+        { title: "Control Systems", description: "Design and implementation of control algorithms." },
+        { title: "IoT System", description: "Internet of Things system integration and development." },
+        { title: "Automation", description: "Automated systems design and implementation." }
+      ]
+    },
+    {
+      name: "Development",
+      items: [
+        { title: "App Development", description: "Mobile and desktop application development." },
+        { title: "Website Development", description: "Web application and website development." },
+        { title: "Unity Game Development", description: "Game development using Unity engine." },
+        { title: "Embedded Software Development", description: "Software development for embedded systems." },
+        { title: "Qt", description: "Cross-platform application development with Qt framework." }
+      ]
+    },
+    {
+      name: "Miscellaneous",
+      items: [
+        { title: "Blender", description: "3D modeling, animation, and rendering." },
+        { title: "n8n", description: "Agentic workflow automation." },
+
+        { title: "AutoCAD 2D", description: "2D drafting and technical drawing." }
+      ]
+    }
+  ]
+};
+
 // Animation variants
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -179,6 +310,8 @@ const Resume = () => {
   const [expandedEducation, setExpandedEducation] = useState(null);
   const [expandedInterest, setExpandedInterest] = useState(null);
   const [expandedResearch, setExpandedResearch] = useState(null);
+  const [expandedAchievement, setExpandedAchievement] = useState({});
+  const [expandedFamiliarWith, setExpandedFamiliarWith] = useState({});
 
   return (
     <motion.div
@@ -200,6 +333,8 @@ const Resume = () => {
               <TabsTrigger value="skills" className="text-sm sm:text-base">Skills</TabsTrigger>
               <TabsTrigger value="interestedin" className="text-sm sm:text-base">Interested In</TabsTrigger>
               <TabsTrigger value="research" className="text-sm sm:text-base">Research</TabsTrigger>
+              <TabsTrigger value="achievements" className="text-sm sm:text-base">Achievements</TabsTrigger>
+              <TabsTrigger value="familiarwith" className="text-sm sm:text-base">Familiar With</TabsTrigger>
               <TabsTrigger value="about" className="text-sm sm:text-base">About me</TabsTrigger>
             </TabsList>
           </motion.div>
@@ -491,6 +626,173 @@ const Resume = () => {
                     </motion.div>
                   ))}
                 </motion.div>
+              </motion.div>
+            </TabsContent>
+
+            {/* Achievements Content */}
+            <TabsContent value="achievements" className="w-full">
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={containerVariants}
+                className="flex flex-col gap-6 sm:gap-[30px] text-center xl:text-left h-full"
+              >
+                <motion.h3 variants={itemVariants} className="text-2xl sm:text-3xl xl:text-4xl font-bold">{achievements.title}</motion.h3>
+                <motion.p variants={itemVariants} className="max-w-[600px] text-white/60 mx-auto xl:mx-0 text-sm sm:text-base">{achievements.description}</motion.p>
+                <ScrollArea className="h-[500px] sm:h-[600px] xl:h-[650px]">
+                  <motion.div variants={containerVariants} className="flex flex-col gap-6 sm:gap-8 pr-2 sm:pr-4 pb-4">
+                    {achievements.subsections.map((subsection, subsectionIndex) => (
+                      <motion.div key={subsectionIndex} variants={itemVariants} className="flex flex-col gap-4">
+                        <motion.h4 
+                          className="text-xl sm:text-2xl font-semibold text-accent flex items-center gap-3"
+                        >
+                          {achievements.icon && <span className="text-accent text-xl sm:text-2xl">{achievements.icon}</span>}
+                          {subsection.name}
+                        </motion.h4>
+                        <motion.div 
+                          variants={containerVariants}
+                          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-[30px]"
+                        >
+                          {subsection.items.map((item, itemIndex) => {
+                            const itemKey = `${subsectionIndex}-${itemIndex}`;
+                            const isExpanded = expandedAchievement[itemKey] === true;
+                            return (
+                              <motion.div
+                                key={`${subsection.name}-${itemIndex}`}
+                                variants={itemVariants}
+                                className="bg-[#27272c] rounded-xl overflow-hidden"
+                              >
+                                <motion.div
+                                  whileHover={{ scale: 1.03, boxShadow: "0px 8px 15px rgba(0, 255, 153, 0.15)" }}
+                                  transition={{ type: "spring", stiffness: 300 }}
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    setExpandedAchievement(prev => ({
+                                      ...prev,
+                                      [itemKey]: !prev[itemKey]
+                                    }));
+                                  }}
+                                  className="p-4 sm:p-6 cursor-pointer"
+                                >
+                                  <div className="flex flex-col gap-2">
+                                    <h3 className="text-lg sm:text-xl font-bold text-accent text-left">{item.title}</h3>
+                                    <span className="bg-primary text-white text-xs sm:text-sm py-1 px-3 rounded-full w-fit">
+                                      {item.highestPosition}
+                                    </span>
+                                  </div>
+                                </motion.div>
+                                <AnimatePresence mode="wait">
+                                  {isExpanded && (
+                                    <motion.div
+                                      initial={{ opacity: 0, height: 0 }}
+                                      animate={{ opacity: 1, height: "auto" }}
+                                      exit={{ opacity: 0, height: 0 }}
+                                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                                      className="overflow-hidden bg-primary/50"
+                                    >
+                                      <div className="p-4 sm:p-6 space-y-2">
+                                        <div className="text-white/90 text-sm sm:text-base">
+                                          <span className="font-semibold text-accent">Highest Position: </span>
+                                          {item.highestPosition}
+                                        </div>
+                                        {item.comment && (
+                                          <div className="text-white/70 text-xs sm:text-sm italic">
+                                            {item.comment}
+                                          </div>
+                                        )}
+                                      </div>
+                                    </motion.div>
+                                  )}
+                                </AnimatePresence>
+                              </motion.div>
+                            );
+                          })}
+                        </motion.div>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                  <ScrollBar />
+                </ScrollArea>
+              </motion.div>
+            </TabsContent>
+
+            {/* Familiar With Content */}
+            <TabsContent value="familiarwith" className="w-full">
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={containerVariants}
+                className="flex flex-col gap-6 sm:gap-[30px] text-center xl:text-left h-full"
+              >
+                <motion.h3 variants={itemVariants} className="text-2xl sm:text-3xl xl:text-4xl font-bold">{familiarWith.title}</motion.h3>
+                <motion.p variants={itemVariants} className="max-w-[600px] text-white/60 mx-auto xl:mx-0 text-sm sm:text-base">{familiarWith.description}</motion.p>
+                <ScrollArea className="h-[500px] sm:h-[600px] xl:h-[650px]">
+                  <motion.div variants={containerVariants} className="flex flex-col gap-6 sm:gap-8 pr-2 sm:pr-4 pb-4">
+                    {familiarWith.subsections.map((subsection, subsectionIndex) => (
+                      <motion.div key={subsectionIndex} variants={itemVariants} className="flex flex-col gap-4">
+                        <motion.h4 
+                          className="text-xl sm:text-2xl font-semibold text-accent flex items-center gap-3"
+                        >
+                          {familiarWith.icon && <span className="text-accent text-xl sm:text-2xl">{familiarWith.icon}</span>}
+                          {subsection.name}
+                        </motion.h4>
+                        <motion.div 
+                          variants={containerVariants}
+                          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-[30px]"
+                        >
+                          {subsection.items.map((item, itemIndex) => {
+                            const itemKey = `${subsectionIndex}-${itemIndex}`;
+                            const isExpanded = expandedFamiliarWith[itemKey] === true;
+                            return (
+                              <motion.div
+                                key={`${subsection.name}-${itemIndex}`}
+                                variants={itemVariants}
+                                className="bg-[#27272c] rounded-xl overflow-hidden"
+                              >
+                                <motion.div
+                                  whileHover={{ scale: 1.03, boxShadow: "0px 8px 15px rgba(0, 255, 153, 0.15)" }}
+                                  transition={{ type: "spring", stiffness: 300 }}
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    setExpandedFamiliarWith(prev => ({
+                                      ...prev,
+                                      [itemKey]: !prev[itemKey]
+                                    }));
+                                  }}
+                                  className="p-4 sm:p-6 cursor-pointer"
+                                >
+                                  <div className="flex flex-col gap-2">
+                                    <h3 className="text-lg sm:text-xl font-bold text-accent text-left">{item.title}</h3>
+                                  </div>
+                                </motion.div>
+                                <AnimatePresence mode="wait">
+                                  {isExpanded && (
+                                    <motion.div
+                                      initial={{ opacity: 0, height: 0 }}
+                                      animate={{ opacity: 1, height: "auto" }}
+                                      exit={{ opacity: 0, height: 0 }}
+                                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                                      className="overflow-hidden bg-primary/50"
+                                    >
+                                      <div className="p-4 sm:p-6 space-y-2">
+                                        {item.description && (
+                                          <div className="text-white/70 text-xs sm:text-sm">
+                                            {item.description}
+                                          </div>
+                                        )}
+                                      </div>
+                                    </motion.div>
+                                  )}
+                                </AnimatePresence>
+                              </motion.div>
+                            );
+                          })}
+                        </motion.div>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                  <ScrollBar />
+                </ScrollArea>
               </motion.div>
             </TabsContent>
 

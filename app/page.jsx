@@ -21,10 +21,26 @@ const Home = () => {
               Hello I&apos;m <br /><span className="text-accent">Md. Tanjim Mahmud Tuhin</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
-            I'm not passionate about anything also I don't seek knowledge. I seek wisdom.I know unity 
-            I know pcb I know firmware development I know quantum physics 
-            What i don't know u can't even know
-            </p>
+            I am not driven by passion.
+I do not hunt knowledge.
+I pursue wisdom.
+
+I know Unity.
+I know PCB design.
+I know firmware development.
+I know quantum physics.
+
+What I do not know
+is beyond what you could ever reach.
+
+I do not lose.
+I only learn.
+Seeking knowledge is my work
+it is the only thing I do.
+
+In the end,
+I remain devoted
+to what I am becoming.</p>
             {/* btn and socials */}
             <div className="flex flex-col xl:flex-row items-center gap-8">
               <a href="/assets/cv.pdf" download>
