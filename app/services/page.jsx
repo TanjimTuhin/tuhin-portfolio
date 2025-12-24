@@ -132,27 +132,60 @@ const Services = () => {
           {servicesData.map((service, index) => (
             <motion.div
               key={index}
-              className="bg-[#27272c] p-6 rounded-xl flex flex-col justify-between items-start gap-4 cursor-pointer relative overflow-hidden h-[250px] group" // Added group class
-              whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0, 255, 153, 0.2)" }}
+              className="glass-strong p-6 rounded-xl flex flex-col justify-between items-start gap-4 cursor-pointer relative overflow-hidden h-[250px] group border border-white/10" // Added glass effect
+              whileHover={{ 
+                scale: 1.05, 
+                y: -5,
+                boxShadow: "0px 20px 40px rgba(153, 0, 255, 0.3)",
+                borderColor: "rgba(153, 0, 255, 0.5)"
+              }}
               transition={{ type: "spring", stiffness: 300 }}
               layout
               onClick={() => handleOpen(index)}
             >
+              {/* Animated gradient border on hover */}
+              <motion.div
+                className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100"
+                style={{
+                  background:
+                    "linear-gradient(45deg, #9900ff, #ff00ff, #00ffff, #9900ff)",
+                  backgroundSize: "200% 200%",
+                }}
+                animate={{
+                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              />
+              <div className="absolute inset-[2px] bg-[#1c1c22] rounded-xl"></div>
               {/* Icon and Title */}
-              <div className="flex items-center gap-4">
-                <div className="text-4xl text-accent mb-2">{service.icon}</div>
+              <div className="flex items-center gap-4 relative z-10">
+                <motion.div 
+                  className="text-4xl text-accent mb-2"
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  {service.icon}
+                </motion.div>
                  <h3 className="text-xl font-bold text-white group-hover:text-accent transition-all duration-300 line-clamp-2">
                     {service.title}
                  </h3>
               </div>
               {/* Short Description */}
-               <p className="text-white/70 text-sm leading-relaxed line-clamp-4">
+               <p className="text-white/70 text-sm leading-relaxed line-clamp-4 relative z-10">
                  {service.shortDescription}
                </p>
                {/* Arrow Icon - Hint for click */}
-               <div className="text-accent text-2xl absolute bottom-4 right-4 group-hover:translate-x-1 transition-transform duration-300">
+               <motion.div 
+                 className="text-accent text-2xl absolute bottom-4 right-4 relative z-10"
+                 whileHover={{ x: 5, scale: 1.2 }}
+                 transition={{ type: "spring", stiffness: 300 }}
+               >
                   <FaArrowRight />
-               </div>
+               </motion.div>
             </motion.div>
           ))}
         </motion.div>
@@ -171,8 +204,13 @@ const Services = () => {
                  {emergingTechData.map((tech, index) => (
                     <motion.div
                         key={index}
-                        className="bg-[#232329] p-4 rounded-lg flex flex-col items-center justify-center gap-3 h-[150px] group cursor-default" // Simpler box
-                        whileHover={{ scale: 1.08, boxShadow: "0px 6px 12px rgba(167, 139, 250, 0.15)" }} // Use purple shadow on hover
+                        className="glass p-4 rounded-lg flex flex-col items-center justify-center gap-3 h-[150px] group cursor-default border border-white/10" // Glass effect
+                        whileHover={{ 
+                          scale: 1.08, 
+                          y: -5,
+                          boxShadow: "0px 10px 20px rgba(167, 139, 250, 0.3)",
+                          borderColor: "rgba(167, 139, 250, 0.5)"
+                        }} // Enhanced hover
                         transition={{ type: "spring", stiffness: 400 }}
                     >
                         <div className="text-4xl text-purple-400 group-hover:text-accent transition-colors duration-300">{tech.icon}</div>
@@ -193,7 +231,7 @@ const Services = () => {
               onClick={handleClose}
             >
               <motion.div
-                className="bg-[#1c1c22] p-8 rounded-xl w-full max-w-2xl max-h-[80vh] flex flex-col gap-6 relative"
+                className="glass-strong p-8 rounded-xl w-full max-w-2xl max-h-[80vh] flex flex-col gap-6 relative border border-accent/30 glow-accent"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}

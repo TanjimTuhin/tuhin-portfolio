@@ -238,15 +238,24 @@ const Work = () => {
                  // Assign ref to each card
                  ref={el => projectRefs.current[index] = el}
                  id={`project-${index}`} // Add ID for scrolling
-                 className="bg-[#27272c] rounded-lg overflow-hidden group cursor-pointer shadow-lg border border-white/10 flex flex-col" // Added flex flex-col
+                 className="glass-strong rounded-xl overflow-hidden group cursor-pointer shadow-lg border border-white/10 flex flex-col relative" // Added flex flex-col and glass effect
                  onClick={() => openModal(project)} // Open modal with this project's data
-                 whileHover={{ y: -5, boxShadow: "0px 10px 20px rgba(0, 255, 153, 0.15)" }} // Adjusted hover effect
+                 whileHover={{ 
+                   y: -8, 
+                   scale: 1.02,
+                   boxShadow: "0px 20px 40px rgba(153, 0, 255, 0.3)",
+                   borderColor: "rgba(153, 0, 255, 0.5)"
+                 }} // Enhanced hover effect
                  initial={{ opacity: 0, y: 50 }}
                  animate={{ opacity: 1, y: 0 }}
                  transition={{ duration: 0.5, delay: index * 0.05 }} // Stagger animation on load
                >
+                 {/* Gradient overlay on hover */}
+                 <motion.div
+                   className="absolute inset-0 bg-gradient-to-br from-accent/10 via-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
+                 />
                  {/* Image Container */}
-                 <div className="relative w-full h-48 md:h-56 flex-shrink-0"> {/* Added flex-shrink-0 */}
+                 <div className="relative w-full h-48 md:h-56 flex-shrink-0 z-10"> {/* Added flex-shrink-0 */}
                    <Image
                      src={project.image}
                      fill
@@ -257,13 +266,19 @@ const Work = () => {
                      onError={(e) => e.target.src = '/assets/work/thumb_placeholder.png'} // Fallback image
                    />
                    {/* Overlay on hover */}
-                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-2">
-                     <span className="text-white text-sm font-semibold mb-2">View Details</span>
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-2">
+                     <motion.span 
+                       className="text-white text-sm font-semibold mb-2 px-3 py-1 glass rounded-full"
+                       initial={{ y: 10, opacity: 0 }}
+                       whileHover={{ y: 0, opacity: 1 }}
+                     >
+                       View Details
+                     </motion.span>
                    </div>
                  </div>
 
                  {/* Text Content */}
-                 <div className="p-4 flex flex-col flex-grow"> {/* Added flex flex-col flex-grow */}
+                 <div className="p-4 flex flex-col flex-grow relative z-10"> {/* Added flex flex-col flex-grow */}
                     <span className="text-xs text-accent/80 mb-1 block">{project.category}</span>
                     <h3 className="text-lg font-semibold text-white mb-2 truncate flex-shrink-0">{project.title}</h3>
                     <p className="text-sm text-white/60 line-clamp-2 mb-3 flex-grow">{project.description}</p>
@@ -294,7 +309,7 @@ const Work = () => {
             onClick={closeModal} // Close on background click
           >
             <motion.div
-              className="bg-[#1c1c22] p-6 md:p-8 rounded-xl w-full max-w-3xl max-h-[90vh] flex flex-col gap-4 relative shadow-2xl border border-accent/20" // Enhanced styling
+              className="glass-strong p-6 md:p-8 rounded-xl w-full max-w-3xl max-h-[90vh] flex flex-col gap-4 relative shadow-2xl border border-accent/30 glow-accent" // Enhanced styling with glassmorphism
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}

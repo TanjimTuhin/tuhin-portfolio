@@ -63,6 +63,29 @@
   body {
     @apply font-primary bg-primary text-white leading-loose;
   }
+  
+  /* Hide default cursor on desktop when custom cursor is active */
+  @media (min-width: 769px) {
+    body {
+      cursor: none;
+    }
+    
+    * {
+      cursor: none !important;
+    }
+  }
+  
+  /* Show default cursor on mobile */
+  @media (max-width: 768px) {
+    body {
+      cursor: auto;
+    }
+    
+    * {
+      cursor: auto !important;
+    }
+  }
+  
   .h1 {
     @apply text-[48px] xl:text-[80px] leading-[1.1] font-semibold;
   }
@@ -86,5 +109,105 @@
   
   .preserve-3d {
     transform-style: preserve-3d;
+  }
+
+  /* Glassmorphism utility */
+  .glass {
+    background: rgba(28, 28, 34, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-strong {
+    background: rgba(28, 28, 34, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(153, 0, 255, 0.2);
+  }
+
+  /* Glow effects */
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(153, 0, 255, 0.3), 0 0 40px rgba(153, 0, 255, 0.1);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 30px rgba(153, 0, 255, 0.5), 0 0 60px rgba(153, 0, 255, 0.2);
+  }
+
+  /* Animated gradient border */
+  .gradient-border {
+    position: relative;
+    background: linear-gradient(#1c1c22, #1c1c22) padding-box,
+                linear-gradient(45deg, #9900ff, #ff00ff, #00ffff, #9900ff) border-box;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1c1c22;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #9900ff, #5e00b6);
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #b300ff, #7a00d9);
+  }
+
+  /* Animation utilities */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 1;
+      box-shadow: 0 0 20px rgba(153, 0, 255, 0.4);
+    }
+    50% {
+      opacity: 0.8;
+      box-shadow: 0 0 40px rgba(153, 0, 255, 0.6);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  /* Gradient text animation */
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
   }
 }

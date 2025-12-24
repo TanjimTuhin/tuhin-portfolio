@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const TypingEffect = () => {
   const professions = [
@@ -24,16 +25,16 @@ const TypingEffect = () => {
         // Typing forward
         if (displayedText.length < currentProfession.length) {
           setDisplayedText(currentProfession.slice(0, displayedText.length + 1));
-          setTypingSpeed(150);
+          setTypingSpeed(100); // Faster typing
         } else {
           // Pause at end before deleting
-          setTimeout(() => setIsDeleting(true), 1000);
+          setTimeout(() => setIsDeleting(true), 2000); // Longer pause
         }
       } else {
         // Deleting
         if (displayedText.length > 0) {
           setDisplayedText(currentProfession.slice(0, displayedText.length - 1));
-          setTypingSpeed(100);
+          setTypingSpeed(50); // Faster deleting
         } else {
           // Move to next profession
           setIsDeleting(false);
@@ -47,11 +48,22 @@ const TypingEffect = () => {
   }, [displayedText, isDeleting, currentProfessionIndex, typingSpeed]);
 
   return (
-  <span className="text-3xl xl:text-4xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent block mb-2 animate-gradient">
-    {displayedText}
-    <span className="animate-pulse text-pink-500">|</span>
-  </span>
-);
+    <motion.span
+      className="text-3xl xl:text-4xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-accent bg-clip-text text-transparent block mb-2 animate-gradient"
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      {displayedText}
+      <motion.span
+        className="inline-block text-accent ml-1"
+        animate={{ opacity: [1, 0, 1] }}
+        transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
+      >
+        |
+      </motion.span>
+    </motion.span>
+  );
 };
 
 export default TypingEffect;

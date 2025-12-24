@@ -359,12 +359,17 @@ const Resume = () => {
                 <ScrollArea className="h-auto max-h-[500px] sm:max-h-[600px]">
                   <motion.ul variants={containerVariants} className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-[30px] pr-2 sm:pr-4">
                     {experience.items.map((item, index) => (
-                      <motion.li key={index} variants={itemVariants} className="bg-[#27272c] rounded-xl overflow-hidden">
+                      <motion.li key={index} variants={itemVariants} className="glass-strong rounded-xl overflow-hidden border border-white/10 relative group">
                         <motion.div
-                          whileHover={{ scale: 1.03, boxShadow: "0px 8px 15px rgba(0, 255, 153, 0.15)" }}
+                          whileHover={{ 
+                            scale: 1.03, 
+                            y: -3,
+                            boxShadow: "0px 15px 30px rgba(153, 0, 255, 0.3)",
+                            borderColor: "rgba(153, 0, 255, 0.5)"
+                          }}
                           transition={{ type: "spring", stiffness: 300 }}
                           onClick={() => setOpenedExperienceIndex(openedExperienceIndex === index ? null : index)}
-                          className="p-4 sm:p-6 cursor-pointer"
+                          className="p-4 sm:p-6 cursor-pointer relative z-10"
                         >
                           <div className="flex flex-col gap-2">
                             <h3 className="text-lg sm:text-xl font-bold text-accent text-left">{item.position}</h3>
@@ -423,11 +428,13 @@ const Resume = () => {
                         variants={itemVariants}
                         whileHover={{
                           scale: 1.05,
-                          boxShadow: "0px 10px 20px rgba(168, 85, 247, 0.2)",
+                          y: -3,
+                          boxShadow: "0px 15px 30px rgba(168, 85, 247, 0.3)",
+                          borderColor: "rgba(168, 85, 247, 0.5)",
                           transition: { type: "spring", stiffness: 300 }
                         }}
                         onClick={() => setExpandedEducation(expandedEducation === index ? null : index)}
-                        className="bg-[#27272c] min-h-[160px] sm:h-auto py-4 sm:py-6 px-6 sm:px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1 cursor-pointer relative overflow-hidden"
+                        className="glass-strong min-h-[160px] sm:h-auto py-4 sm:py-6 px-6 sm:px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1 cursor-pointer relative overflow-hidden border border-white/10"
                       >
                         <motion.div
                           className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-accent/10"
@@ -483,10 +490,12 @@ const Resume = () => {
                               whileHover={{
                                 scale: 1.1,
                                 rotate: [0, -5, 5, 0],
-                                boxShadow: "0px 10px 30px rgba(0, 255, 153, 0.3)"
+                                y: -5,
+                                boxShadow: "0px 15px 40px rgba(153, 0, 255, 0.4)",
+                                borderColor: "rgba(153, 0, 255, 0.5)"
                               }}
                               transition={{ type: "spring", stiffness: 300 }}
-                              className="w-full h-[100px] sm:h-[120px] xl:h-[150px] bg-[#27272c] rounded-xl flex justify-center items-center group cursor-pointer relative overflow-hidden"
+                              className="w-full h-[100px] sm:h-[120px] xl:h-[150px] glass-strong rounded-xl flex justify-center items-center group cursor-pointer relative overflow-hidden border border-white/10"
                             >
                               <motion.div
                                 className="absolute inset-0 bg-gradient-to-br from-accent/20 to-purple-500/20"
@@ -525,10 +534,12 @@ const Resume = () => {
                       variants={itemVariants}
                       whileHover={{
                         scale: 1.03,
-                        boxShadow: "0px 10px 25px rgba(0, 255, 153, 0.2)"
+                        y: -3,
+                        boxShadow: "0px 15px 35px rgba(153, 0, 255, 0.3)",
+                        borderColor: "rgba(153, 0, 255, 0.5)"
                       }}
                       onClick={() => setExpandedInterest(expandedInterest === index ? null : index)}
-                      className="bg-[#27272c] p-4 sm:p-6 rounded-xl flex flex-col gap-3 sm:gap-4 cursor-pointer relative overflow-hidden"
+                      className="glass-strong p-4 sm:p-6 rounded-xl flex flex-col gap-3 sm:gap-4 cursor-pointer relative overflow-hidden border border-white/10"
                     >
                       <motion.div
                         className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent to-purple-500"
@@ -583,11 +594,12 @@ const Resume = () => {
                       variants={itemVariants}
                       whileHover={{
                         scale: 1.03,
-                        boxShadow: "0px 15px 30px rgba(168, 85, 247, 0.3)",
-                        borderColor: "rgba(0, 255, 153, 0.5)"
+                        y: -3,
+                        boxShadow: "0px 20px 40px rgba(168, 85, 247, 0.4)",
+                        borderColor: "rgba(168, 85, 247, 0.6)"
                       }}
                       onClick={() => setExpandedResearch(expandedResearch === index ? null : index)}
-                      className="bg-[#27272c] p-4 sm:p-6 rounded-xl flex flex-col gap-3 border border-white/10 cursor-pointer relative overflow-hidden transition-all duration-300"
+                      className="glass-strong p-4 sm:p-6 rounded-xl flex flex-col gap-3 border border-white/10 cursor-pointer relative overflow-hidden transition-all duration-300"
                     >
                       <motion.div
                         className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-accent/5"
@@ -817,11 +829,12 @@ const Resume = () => {
                       variants={itemVariants}
                       whileHover={{
                         scale: 1.05,
+                        y: -2,
                         borderColor: "#a855f7",
-                        boxShadow: "0px 8px 20px rgba(168, 85, 247, 0.3)"
+                        boxShadow: "0px 10px 25px rgba(168, 85, 247, 0.4)"
                       }}
                       transition={{ type: "spring", stiffness: 300 }}
-                      className="bg-[#27272c] p-3 sm:p-4 rounded-lg border-l-4 border-purple-500 cursor-pointer relative overflow-hidden group"
+                      className="glass-strong p-3 sm:p-4 rounded-lg border-l-4 border-purple-500 cursor-pointer relative overflow-hidden group"
                     >
                       <motion.div
                         className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-accent/10"
