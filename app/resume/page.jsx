@@ -48,7 +48,7 @@ const experience = {
   description: "Click on any role to see more details about my responsibilities.",
   items: [
     {
-      company: "Cybernetics Hi Tech Solutions", position: "Embedded Software Engineer", duration: "Feb 2025 - Present",
+      company: "Cybernetics Hi Tech Solutions", position: "Robotics Engineer", duration: "Feb 2025 - Present",
       details: [
         "Worked on automation, advanced robotics, embedded systems, drones, and IoT.",
         "Developed firmware using C/C++, Arduino, ESP-32, STM-32, Raspberry-Pi.",
@@ -84,7 +84,7 @@ const education = {
 
 // SKILLS
 const skills = {
-  title: "My Skills", description: "Technologies and tools I am proficient in.",
+  title: "My Skills", description: "I am in love with a fairytale even though it hurts.",
   skillList: [
     { icon: <FaPython />, name: "Python" }, { icon: <SiCplusplus />, name: "C/C++" },
     { icon: <FaJava />, name: "Java" }, { icon: <FaHtml5 />, name: "HTML5" },
@@ -270,12 +270,16 @@ const familiarWith = {
       ]
     },
     {
-      name: "Miscellaneous",
+      name: "Designing",
       items: [
         { title: "Blender", description: "3D modeling, animation, and rendering." },
-        { title: "n8n", description: "Agentic workflow automation." },
-
         { title: "AutoCAD 2D", description: "2D drafting and technical drawing." }
+      ]
+    },
+    {
+      name: "Automation",
+      items: [
+        { title: "n8n", description: "Agentic workflow automation." },
       ]
     }
   ]
