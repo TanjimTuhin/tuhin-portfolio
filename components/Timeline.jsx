@@ -7,23 +7,37 @@ const timelineEvents = [
   {
     year: "2000",
     title: "Born",
-    description: "Started my journey in Dhaka, Bangladesh",
+    description: "Started my journey in Bogura Cantonment, Bangladesh",
     icon: <Calendar className="w-5 h-5" />,
     type: "milestone"
   },
   {
-    year: "2002",
-    title: "First Code",
-    description: "Wrote my first program in Python",
+    year: "2005",
+    title: "First Question",
+    description: "From where time started?",
     icon: <Calendar className="w-5 h-5" />,
     type: "milestone"
   },
   {
     year: "2020",
     title: "Education",
-    description: "Started Computer Science degree at MIST",
+    description: "Started Electrical Engineering degree at MIST",
     icon: <GraduationCap className="w-5 h-5" />,
     type: "education"
+  },
+  {
+    year: "2025",
+    title: "Research Publication",
+    description: "Published research papers in semiconductor materials",
+    icon: <Briefcase className="w-5 h-5" />,
+    type: "work"
+  },
+  {
+    year: "2024",
+    title: "Unemployed",
+    description: "Finiding purpose of my life",
+    icon: <Briefcase className="w-5 h-5" />,
+    type: "work"
   },
   {
     year: "2024",
@@ -33,16 +47,9 @@ const timelineEvents = [
     type: "work"
   },
   {
-    year: "2025",
-    title: "Research Publication",
-    description: "Published research papers in AI/ML",
-    icon: <Briefcase className="w-5 h-5" />,
-    type: "work"
-  },
-  {
     year: "2025-Present",
     title: "Present",
-    description: "Leading cybersecurity and AI projects",
+    description: "Learning cybersecurity and doing AI projects",
     icon: <Briefcase className="w-5 h-5" />,
     type: "milestone"
   }

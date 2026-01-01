@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FaHtml5, FaCss3, FaJs, FaReact, FaFigma, FaNodeJs, FaPython,
@@ -154,8 +155,8 @@ const research = {
         "Co-authored research paper on machine learning applications for security systems.",
         "Developed novel dataset for improving violence detection algorithms."
       ],
-    }
-  ]
+    },
+  ],
 };
 
 // Achievements data
@@ -181,8 +182,8 @@ const achievements = {
           title: "Call of Duty",
           highestPosition: "Top 5",
           comment: "Maintained high K/D ratio and strategic gameplay excellence."
-        }
-      ]
+        },
+      ],
     },
     {
       name: "Academic",
@@ -191,8 +192,8 @@ const achievements = {
           title: "Academic Excellence",
           highestPosition: "Dean's List (DIU)",
           comment: "Maintained outstanding academic performance throughout studies."
-        }
-      ]
+        },
+      ],
     },
     {
       name: "Brain Game",
@@ -201,8 +202,8 @@ const achievements = {
           title: "Chess Tournament",
           highestPosition: "2nd Place",
           comment: "Competed in regional chess championships."
-        }
-      ]
+        },
+      ],
     },
     {
       name: "Competition",
@@ -211,8 +212,8 @@ const achievements = {
           title: "Hackathon Winner",
           highestPosition: "1st Place",
           comment: "Led team to victory in intra university coding competition."
-        }
-      ]
+        },
+      ],
     },
     {
       name: "Miscellaneous",
@@ -221,10 +222,10 @@ const achievements = {
           title: "Try Hack me",
           highestPosition: "Top 2% in the world",
           comment: "Active contributor to multiple open source projects."
-        }
-      ]
-    }
-  ]
+        },
+      ],
+    },
+  ],
 };
 
 // Familiar With data
@@ -240,14 +241,14 @@ const familiarWith = {
         { title: "VLSI", description: "Very Large Scale Integration design and implementation." },
         { title: "Satellite Communication", description: "Satellite communication systems and protocols." },
         { title: "Microprocessor", description: "Microprocessor architecture and programming." },
-        { title: "Networking", description: "Network design, configuration, and management." }
-      ]
+        { title: "Networking", description: "Network design, configuration, and management." },
+      ],
     },
     {
       name: "Mechanical",
       items: [
-        { title: "SolidWorks", description: "3D CAD modeling and mechanical design." }
-      ]
+        { title: "SolidWorks", description: "3D CAD modeling and mechanical design." },
+      ],
     },
     {
       name: "Robotics",
@@ -256,8 +257,8 @@ const familiarWith = {
         { title: "Inverse Kinematics", description: "Mathematical modeling and control of robotic manipulators." },
         { title: "Control Systems", description: "Design and implementation of control algorithms." },
         { title: "IoT System", description: "Internet of Things system integration and development." },
-        { title: "Automation", description: "Automated systems design and implementation." }
-      ]
+        { title: "Automation", description: "Automated systems design and implementation." },
+      ],
     },
     {
       name: "Development",
@@ -266,23 +267,23 @@ const familiarWith = {
         { title: "Website Development", description: "Web application and website development." },
         { title: "Unity Game Development", description: "Game development using Unity engine." },
         { title: "Embedded Software Development", description: "Software development for embedded systems." },
-        { title: "Qt", description: "Cross-platform application development with Qt framework." }
-      ]
+        { title: "Qt", description: "Cross-platform application development with Qt framework." },
+      ],
     },
     {
       name: "Designing",
       items: [
         { title: "Blender", description: "3D modeling, animation, and rendering." },
-        { title: "AutoCAD 2D", description: "2D drafting and technical drawing." }
-      ]
+        { title: "AutoCAD 2D", description: "2D drafting and technical drawing." },
+      ],
     },
     {
       name: "Automation",
       items: [
         { title: "n8n", description: "Agentic workflow automation." },
-      ]
-    }
-  ]
+      ],
+    },
+  ],
 };
 
 // Animation variants
@@ -291,9 +292,9 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1
-    }
-  }
+      staggerChildren: 0.1,
+    },
+  },
 };
 
 const itemVariants = {
@@ -303,19 +304,71 @@ const itemVariants = {
     opacity: 1,
     transition: {
       type: "spring",
-      stiffness: 100
-    }
-  }
+      stiffness: 100,
+    },
+  },
 };
 
 // --- COMPONENT ---
 const Resume = () => {
+  const searchParams = useSearchParams();
   const [openedExperienceIndex, setOpenedExperienceIndex] = useState(null);
   const [expandedEducation, setExpandedEducation] = useState(null);
   const [expandedInterest, setExpandedInterest] = useState(null);
   const [expandedResearch, setExpandedResearch] = useState(null);
   const [expandedAchievement, setExpandedAchievement] = useState({});
   const [expandedFamiliarWith, setExpandedFamiliarWith] = useState({});
+
+  const [activeTab, setActiveTab] = useState("experience");
+
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  const sidebarTriggerClass = "transition-all duration-300 hover:bg-purple-600/80 hover:translate-x-1 hover:shadow-[0_4px_12px_rgba(124,58,237,0.4)] data-[state=active]:border-l-4 data-[state=active]:border-purple-300 data-[state=active]:pl-5";
+
+  const tabFromQuery = searchParams.get("tab");
+
+  useEffect(() => {
+    if (!tabFromQuery) return;
+
+    const allowedTabs = new Set([
+      "experience",
+      "education",
+      "skills",
+      "interestedin",
+      "research",
+      "achievements",
+      "familiarwith",
+      "about",
+    ]);
+
+    if (!allowedTabs.has(tabFromQuery)) return;
+
+    setActiveTab(tabFromQuery);
+
+    requestAnimationFrame(() => {
+      const targetId =
+        tabFromQuery === "experience"
+          ? "resume-experience"
+          : tabFromQuery === "skills"
+            ? "resume-skills"
+            : null;
+
+      if (!targetId) return;
+      const el = document.getElementById(targetId);
+      el?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }, [tabFromQuery]);
+
+  useEffect(() => {
+    const onScroll = () => setShowBackToTop(window.scrollY > 300);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const handleBackToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <motion.div
@@ -324,7 +377,7 @@ const Resume = () => {
       className="min-h-screen flex items-start justify-center py-6 sm:py-8 xl:py-12 px-4 sm:px-6"
     >
       <div className="container mx-auto max-w-7xl w-full">
-        <Tabs defaultValue="experience" className="flex flex-col xl:flex-row gap-8 xl:gap-[80px]">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="flex flex-col xl:flex-row gap-8 xl:gap-[80px]">
           {/* Tab Buttons */}
           <motion.div
             initial={{ x: -50, opacity: 0 }}
@@ -333,14 +386,14 @@ const Resume = () => {
             className="xl:sticky xl:top-8 xl:h-fit xl:w-auto w-full"
           >
             <TabsList className="flex flex-col w-full max-w-full sm:max-w-[380px] mx-auto xl:mx-10 gap-3 sm:gap-6">
-              <TabsTrigger value="experience" className="text-sm sm:text-base">Experience</TabsTrigger>
-              <TabsTrigger value="education" className="text-sm sm:text-base">Education</TabsTrigger>
-              <TabsTrigger value="skills" className="text-sm sm:text-base">Skills</TabsTrigger>
-              <TabsTrigger value="interestedin" className="text-sm sm:text-base">Interested In</TabsTrigger>
-              <TabsTrigger value="research" className="text-sm sm:text-base">Research</TabsTrigger>
-              <TabsTrigger value="achievements" className="text-sm sm:text-base">Achievements</TabsTrigger>
-              <TabsTrigger value="familiarwith" className="text-sm sm:text-base">Familiar With</TabsTrigger>
-              <TabsTrigger value="about" className="text-sm sm:text-base">About me</TabsTrigger>
+              <TabsTrigger value="experience" className={`${sidebarTriggerClass} text-sm sm:text-base`}>Experience</TabsTrigger>
+              <TabsTrigger value="education" className={`${sidebarTriggerClass} text-sm sm:text-base`}>Education</TabsTrigger>
+              <TabsTrigger value="skills" className={`${sidebarTriggerClass} text-sm sm:text-base`}>Skills</TabsTrigger>
+              <TabsTrigger value="interestedin" className={`${sidebarTriggerClass} text-sm sm:text-base`}>Interested In</TabsTrigger>
+              <TabsTrigger value="research" className={`${sidebarTriggerClass} text-sm sm:text-base`}>Research</TabsTrigger>
+              <TabsTrigger value="achievements" className={`${sidebarTriggerClass} text-sm sm:text-base`}>Achievements</TabsTrigger>
+              <TabsTrigger value="familiarwith" className={`${sidebarTriggerClass} text-sm sm:text-base`}>Familiar With</TabsTrigger>
+              <TabsTrigger value="about" className={`${sidebarTriggerClass} text-sm sm:text-base`}>About me</TabsTrigger>
             </TabsList>
           </motion.div>
 
@@ -355,18 +408,18 @@ const Resume = () => {
                 variants={containerVariants}
                 className="flex flex-col gap-6 sm:gap-[30px] text-center xl:text-left"
               >
-                <motion.h3 variants={itemVariants} className="text-2xl sm:text-3xl xl:text-4xl font-bold">{experience.title}</motion.h3>
+                <motion.h3 id="resume-experience" variants={itemVariants} className="text-2xl sm:text-3xl xl:text-4xl font-bold">{experience.title}</motion.h3>
                 <motion.p variants={itemVariants} className="max-w-[600px] text-white/60 mx-auto xl:mx-0 text-sm sm:text-base">{experience.description}</motion.p>
                 <ScrollArea className="h-auto max-h-[400px] sm:max-h-[500px] md:max-h-[600px] lg:max-h-[500px]">
                   <motion.ul variants={containerVariants} className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-[30px] pr-2 sm:pr-4">
                     {experience.items.map((item, index) => (
                       <motion.li key={index} variants={itemVariants} className="glass-strong rounded-xl overflow-hidden border border-white/10 relative group">
                         <motion.div
-                          whileHover={{ 
-                            scale: 1.03, 
+                          whileHover={{
+                            scale: 1.03,
                             y: -3,
                             boxShadow: "0px 15px 30px rgba(153, 0, 255, 0.3)",
-                            borderColor: "rgba(153, 0, 255, 0.5)"
+                            borderColor: "rgba(153, 0, 255, 0.5)",
                           }}
                           transition={{ type: "spring", stiffness: 300 }}
                           onClick={() => setOpenedExperienceIndex(openedExperienceIndex === index ? null : index)}
@@ -432,7 +485,6 @@ const Resume = () => {
                           y: -3,
                           boxShadow: "0px 15px 30px rgba(168, 85, 247, 0.3)",
                           borderColor: "rgba(168, 85, 247, 0.5)",
-                          transition: { type: "spring", stiffness: 300 }
                         }}
                         onClick={() => setExpandedEducation(expandedEducation === index ? null : index)}
                         className="glass-strong min-h-[160px] sm:h-auto py-4 sm:py-6 px-6 sm:px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1 cursor-pointer relative overflow-hidden border border-white/10"
@@ -441,7 +493,7 @@ const Resume = () => {
                           className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-accent/10"
                           initial={{ x: "-100%" }}
                           whileHover={{ x: "100%" }}
-                          transition={{ duration: 0.6 }}
+                          transition={{ duration: 0.5 }}
                         />
                         <span className="text-accent text-base sm:text-lg relative z-10">{item.duration}</span>
                         <h3 className="text-base sm:text-xl max-w-[260px] text-center lg:text-left relative z-10">{item.degree}</h3>
@@ -478,7 +530,7 @@ const Resume = () => {
                 className="flex flex-col gap-6 sm:gap-[30px]"
               >
                 <div className="flex flex-col gap-4 sm:gap-[30px] text-center xl:text-left">
-                  <motion.h3 variants={itemVariants} className="text-2xl sm:text-3xl xl:text-4xl font-bold">{skills.title}</motion.h3>
+                  <motion.h3 id="resume-skills" variants={itemVariants} className="text-2xl sm:text-3xl xl:text-4xl font-bold">{skills.title}</motion.h3>
                   <motion.p variants={itemVariants} className="max-w-[600px] text-white/60 mx-auto xl:mx-0 text-sm sm:text-base">{skills.description}</motion.p>
                 </div>
                 <motion.ul variants={containerVariants} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4 xl:gap-[30px]">
@@ -493,7 +545,7 @@ const Resume = () => {
                                 rotate: [0, -5, 5, 0],
                                 y: -5,
                                 boxShadow: "0px 15px 40px rgba(153, 0, 255, 0.4)",
-                                borderColor: "rgba(153, 0, 255, 0.5)"
+                                borderColor: "rgba(153, 0, 255, 0.5)",
                               }}
                               transition={{ type: "spring", stiffness: 300 }}
                               className="w-full h-[100px] sm:h-[120px] xl:h-[150px] glass-strong rounded-xl flex justify-center items-center group cursor-pointer relative overflow-hidden border border-white/10"
@@ -537,10 +589,10 @@ const Resume = () => {
                         scale: 1.03,
                         y: -3,
                         boxShadow: "0px 15px 35px rgba(153, 0, 255, 0.3)",
-                        borderColor: "rgba(153, 0, 255, 0.5)"
+                        borderColor: "rgba(153, 0, 255, 0.5)",
                       }}
                       onClick={() => setExpandedInterest(expandedInterest === index ? null : index)}
-                      className="glass-strong p-4 sm:p-6 rounded-xl flex flex-col gap-3 sm:gap-4 cursor-pointer relative overflow-hidden border border-white/10"
+                      className="glass-strong p-4 sm:p-6 rounded-xl flex flex-col gap-3 border border-white/10 cursor-pointer relative overflow-hidden transition-all duration-300"
                     >
                       <motion.div
                         className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent to-purple-500"
@@ -597,7 +649,7 @@ const Resume = () => {
                         scale: 1.03,
                         y: -3,
                         boxShadow: "0px 20px 40px rgba(168, 85, 247, 0.4)",
-                        borderColor: "rgba(168, 85, 247, 0.6)"
+                        borderColor: "rgba(168, 85, 247, 0.6)",
                       }}
                       onClick={() => setExpandedResearch(expandedResearch === index ? null : index)}
                       className="glass-strong p-4 sm:p-6 rounded-xl flex flex-col gap-3 border border-white/10 cursor-pointer relative overflow-hidden transition-all duration-300"
@@ -660,13 +712,13 @@ const Resume = () => {
                   <motion.div variants={containerVariants} className="flex flex-col gap-6 sm:gap-8 pr-2 sm:pr-4 pb-4">
                     {achievements.subsections.map((subsection, subsectionIndex) => (
                       <motion.div key={subsectionIndex} variants={itemVariants} className="flex flex-col gap-4">
-                        <motion.h4 
+                        <motion.h4
                           className="text-xl sm:text-2xl font-semibold text-accent flex items-center gap-3"
                         >
                           {achievements.icon && <span className="text-accent text-xl sm:text-2xl">{achievements.icon}</span>}
                           {subsection.name}
                         </motion.h4>
-                        <motion.div 
+                        <motion.div
                           variants={containerVariants}
                           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-[30px]"
                         >
@@ -686,7 +738,7 @@ const Resume = () => {
                                     e.stopPropagation();
                                     setExpandedAchievement(prev => ({
                                       ...prev,
-                                      [itemKey]: !prev[itemKey]
+                                      [itemKey]: !prev[itemKey],
                                     }));
                                   }}
                                   className="p-4 sm:p-6 cursor-pointer"
@@ -747,13 +799,13 @@ const Resume = () => {
                   <motion.div variants={containerVariants} className="flex flex-col gap-6 sm:gap-8 pr-2 sm:pr-4 pb-4">
                     {familiarWith.subsections.map((subsection, subsectionIndex) => (
                       <motion.div key={subsectionIndex} variants={itemVariants} className="flex flex-col gap-4">
-                        <motion.h4 
+                        <motion.h4
                           className="text-xl sm:text-2xl font-semibold text-accent flex items-center gap-3"
                         >
                           {familiarWith.icon && <span className="text-accent text-xl sm:text-2xl">{familiarWith.icon}</span>}
                           {subsection.name}
                         </motion.h4>
-                        <motion.div 
+                        <motion.div
                           variants={containerVariants}
                           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-[30px]"
                         >
@@ -773,7 +825,7 @@ const Resume = () => {
                                     e.stopPropagation();
                                     setExpandedFamiliarWith(prev => ({
                                       ...prev,
-                                      [itemKey]: !prev[itemKey]
+                                      [itemKey]: !prev[itemKey],
                                     }));
                                   }}
                                   className="p-4 sm:p-6 cursor-pointer"
@@ -832,7 +884,7 @@ const Resume = () => {
                         scale: 1.05,
                         y: -2,
                         borderColor: "#a855f7",
-                        boxShadow: "0px 10px 25px rgba(168, 85, 247, 0.4)"
+                        boxShadow: "0px 10px 25px rgba(168, 85, 247, 0.4)",
                       }}
                       transition={{ type: "spring", stiffness: 300 }}
                       className="glass-strong p-3 sm:p-4 rounded-lg border-l-4 border-purple-500 cursor-pointer relative overflow-hidden group"
@@ -853,6 +905,22 @@ const Resume = () => {
           </div>
         </Tabs>
       </div>
+
+      <AnimatePresence>
+        {showBackToTop && (
+          <motion.button
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.2 }}
+            onClick={handleBackToTop}
+            className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-accent text-primary text-2xl flex items-center justify-center shadow-lg transition-transform hover:scale-110"
+            aria-label="Back to top"
+          >
+            ↑
+          </motion.button>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };
