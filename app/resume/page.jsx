@@ -49,7 +49,23 @@ const experience = {
   description: "Click on any role to see more details about my responsibilities.",
   items: [
     {
-      company: "Cybernetics Hi Tech Solutions", position: "Robotics Engineer", duration: "Feb 2025 - Present",
+      company: "Red Data", position: "R&D Engineer", duration: "Jan 2026- present",
+      details: [
+        "Research and development in automation, advanced robotics, embedded systems and IoT.",
+      
+      ],
+    },
+    {
+      company: "Hidden Investigations", position: "Researcher", duration: "Dec 2025- present",
+      details: [
+        "Vulnerability Research & Discovery (Zero-Day Identification,Fuzz Testing, Exploit Development)",
+        "Conducted security assessments and penetration testing on various systems.",
+        "Analyzed and documented security vulnerabilities in software and hardware.",
+        "Developed custom exploits for identified vulnerabilities.",
+      ],
+    },
+    {
+      company: "Cybernetics Hi Tech Solutions", position: "Robotics Engineer", duration: "Feb 2025 - Dec 2025",
       details: [
         "Worked on automation, advanced robotics, embedded systems, drones, and IoT.",
         "Developed firmware using C/C++, Arduino, ESP-32, STM-32, Raspberry-Pi.",
@@ -63,6 +79,14 @@ const experience = {
         "Developed and maintained Unity-based applications and games.",
         "Collaborated with cross-functional teams to deliver high-quality software solutions.",
         "Implemented game mechanics, UI systems, and performance optimizations.",
+      ],
+    },
+    {
+      company: "Made Easy BD", position: "Senior teacher", duration: "Jan 2024 - Dec 2025",
+      details: [
+        "Led training sessions and workshops for students.",
+        "Developed and updated curriculum materials.",
+        "Evaluated student performance and provided feedback.",
       ],
     },
     { company: "BTRC", position: "Internship", duration: "Feb 2023 - Feb 2023", details: ["Gained insight into national telecommunication regulations.", "Assisted with monitoring spectrum usage and compliance."] },
