@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -334,7 +334,7 @@ const itemVariants = {
 };
 
 // --- COMPONENT ---
-const Resume = () => {
+const ResumeContent = () => {
   const searchParams = useSearchParams();
   const [openedExperienceIndex, setOpenedExperienceIndex] = useState(null);
   const [expandedEducation, setExpandedEducation] = useState(null);
@@ -947,4 +947,12 @@ const Resume = () => {
   );
 };
 
-export default Resume;
+const ResumePage = () => {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-white">Loading resume...</div>}>
+      <ResumeContent />
+    </Suspense>
+  );
+};
+
+export default ResumePage;
