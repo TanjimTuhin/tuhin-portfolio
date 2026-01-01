@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import InboxDropdown from "./InboxDropdown";
 
 const links = [
     {
@@ -28,20 +29,23 @@ const links = [
 ];
 const Nav = () => {
     const pathname = usePathname();
-    console.log(pathname);
     return (
-        <nav className="flex gap-8">
+        <nav className="flex items-center gap-8">
             {links.map((link, index) => {
                 return (
-                    <Link href={link.path} key={index} 
-                    className={`${
-                        link.path === pathname && "text-accent border-b-2 border-accent"
-                        } capitalize font-medium hover:text-accent transition-all`}
+                    <Link
+                        href={link.path}
+                        key={index}
+                        className={`${
+                            link.path === pathname && "text-accent border-b-2 border-accent"
+                        } capitalize font-medium hover:text-accent transition-all nav-underline`}
                     >
                         {link.name}
                     </Link>
                 );
             })}
+            {/* Add Inbox Dropdown */}
+            <InboxDropdown />
         </nav>
     );
 };

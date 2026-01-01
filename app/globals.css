@@ -2,6 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+@keyframes colorShift {
+    0% { color: #9900ff; }
+    25% { color: #00ff99; }
+    50% { color: #ff6b6b; }
+    75% { color: #4ecdc4; }
+    100% { color: #9900ff; }
+}
+
+.animate-blink {
+    animation: blink 3s ease-in-out infinite;
+}
+
+.animate-color {
+    animation: colorShift 4s ease-in-out infinite;
+}
+
+.logo-dot {
+    margin-left: 1rem;
+    opacity: 0.6;
+}
+
+.logo-dot-animated {
+    margin-left: 1rem;
+    display: inline-block;
+    animation: blink 3s ease-in-out infinite, colorShift 4s ease-in-out infinite;
+}
+
+.logo-hover:hover {
+    animation: purpleGlow 3s ease-in-out infinite;
+}
+
+@keyframes purpleGlow {
+    0%, 100% { color: #9900ff; text-shadow: 0 0 10px rgba(153, 0, 255, 0.5); }
+    50% { color: #ff00ff; text-shadow: 0 0 20px rgba(255, 0, 255, 0.8); }
+}
+
+.nav-underline {
+    position: relative;
+}
+
+.nav-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #9900ff, #00ff99);
+    transition: width 0.5s ease-in-out;
+}
+
+.nav-underline:hover::after {
+    width: 100%;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

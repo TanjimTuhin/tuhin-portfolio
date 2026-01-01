@@ -321,15 +321,16 @@ const Resume = () => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { delay: 0.5, duration: 0.4, ease: "easeIn" } }}
-      className="min-h-[80vh] flex items-center justify-center py-6 sm:py-8 xl:py-12 px-4 sm:px-6"
+      className="min-h-screen flex items-start justify-center py-6 sm:py-8 xl:py-12 px-4 sm:px-6"
     >
-      <div className="container mx-auto max-w-7xl">
+      <div className="container mx-auto max-w-7xl w-full">
         <Tabs defaultValue="experience" className="flex flex-col xl:flex-row gap-8 xl:gap-[80px]">
           {/* Tab Buttons */}
           <motion.div
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.5 }}
+            className="xl:sticky xl:top-8 xl:h-fit xl:w-auto w-full"
           >
             <TabsList className="flex flex-col w-full max-w-full sm:max-w-[380px] mx-auto xl:mx-10 gap-3 sm:gap-6">
               <TabsTrigger value="experience" className="text-sm sm:text-base">Experience</TabsTrigger>
@@ -344,7 +345,7 @@ const Resume = () => {
           </motion.div>
 
           {/* Tab Content Area */}
-          <div className="min-h-[10vh] w-full">
+          <div className="w-full xl:max-h-[calc(100vh-4rem)] xl:overflow-y-auto pb-20">
 
             {/* Experience Content */}
             <TabsContent value="experience" className="w-full">
@@ -356,7 +357,7 @@ const Resume = () => {
               >
                 <motion.h3 variants={itemVariants} className="text-2xl sm:text-3xl xl:text-4xl font-bold">{experience.title}</motion.h3>
                 <motion.p variants={itemVariants} className="max-w-[600px] text-white/60 mx-auto xl:mx-0 text-sm sm:text-base">{experience.description}</motion.p>
-                <ScrollArea className="h-auto max-h-[500px] sm:max-h-[600px]">
+                <ScrollArea className="h-auto max-h-[400px] sm:max-h-[500px] md:max-h-[600px] lg:max-h-[500px]">
                   <motion.ul variants={containerVariants} className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-[30px] pr-2 sm:pr-4">
                     {experience.items.map((item, index) => (
                       <motion.li key={index} variants={itemVariants} className="glass-strong rounded-xl overflow-hidden border border-white/10 relative group">
@@ -420,7 +421,7 @@ const Resume = () => {
               >
                 <motion.h3 variants={itemVariants} className="text-2xl sm:text-3xl xl:text-4xl font-bold">{education.title}</motion.h3>
                 <motion.p variants={itemVariants} className="max-w-[600px] text-white/60 mx-auto xl:mx-0 text-sm sm:text-base">{education.description}</motion.p>
-                <ScrollArea className="h-auto max-h-[500px]">
+                <ScrollArea className="h-auto max-h-[400px] sm:max-h-[450px] md:max-h-[500px] lg:max-h-[450px]">
                   <motion.ul variants={containerVariants} className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-[30px] pr-2 sm:pr-4">
                     {education.items.sort((a, b) => b.duration.localeCompare(a.duration)).map((item, index) => (
                       <motion.li
@@ -655,7 +656,7 @@ const Resume = () => {
               >
                 <motion.h3 variants={itemVariants} className="text-2xl sm:text-3xl xl:text-4xl font-bold">{achievements.title}</motion.h3>
                 <motion.p variants={itemVariants} className="max-w-[600px] text-white/60 mx-auto xl:mx-0 text-sm sm:text-base">{achievements.description}</motion.p>
-                <ScrollArea className="h-[500px] sm:h-[600px] xl:h-[650px]">
+                <ScrollArea className="h-[400px] sm:h-[500px] xl:h-[600px]">
                   <motion.div variants={containerVariants} className="flex flex-col gap-6 sm:gap-8 pr-2 sm:pr-4 pb-4">
                     {achievements.subsections.map((subsection, subsectionIndex) => (
                       <motion.div key={subsectionIndex} variants={itemVariants} className="flex flex-col gap-4">
@@ -742,7 +743,7 @@ const Resume = () => {
               >
                 <motion.h3 variants={itemVariants} className="text-2xl sm:text-3xl xl:text-4xl font-bold">{familiarWith.title}</motion.h3>
                 <motion.p variants={itemVariants} className="max-w-[600px] text-white/60 mx-auto xl:mx-0 text-sm sm:text-base">{familiarWith.description}</motion.p>
-                <ScrollArea className="h-[500px] sm:h-[600px] xl:h-[650px]">
+                <ScrollArea className="h-[400px] sm:h-[500px] xl:h-[600px]">
                   <motion.div variants={containerVariants} className="flex flex-col gap-6 sm:gap-8 pr-2 sm:pr-4 pb-4">
                     {familiarWith.subsections.map((subsection, subsectionIndex) => (
                       <motion.div key={subsectionIndex} variants={itemVariants} className="flex flex-col gap-4">

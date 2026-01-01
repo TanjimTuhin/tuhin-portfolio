@@ -9,6 +9,8 @@ import Social from "@/components/Social";
 import Photo from "@/components/Photo";
 import Stats from "@/components/Stats";
 import TypingEffect from "@/components/TypingEffect";
+import ExpertiseGrid from "@/components/ExpertiseGrid";
+import Timeline from "@/components/Timeline";
 
 const Home = () => {
   const containerVariants = {
@@ -157,6 +159,8 @@ const Home = () => {
       <div className="mt-auto">
         <Stats />
       </div>
+      <ExpertiseGrid />
+      <Timeline />
     </section>
   );
 };

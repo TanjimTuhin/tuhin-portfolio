@@ -1,8 +1,16 @@
+"use client";
+
 import Link from "next/link";
 import {Button} from "./ui/button";
 
 import Nav from "./Nav"; 
 import MobileNav from "./MobileNav";
+
+const BlinkingExclamation = () => (
+    <span className="inline-block animate-blink animate-color">
+        !
+    </span>
+);
 
 const Header = () => {
     return (
@@ -10,8 +18,8 @@ const Header = () => {
             <div className="container mx-auto flex justify-between items-center">
                 {/* logo*/}
                 <Link href="/">
-                    <h1 className="text-4xl font-semibold">
-                        Tuh!N <span className="text-accent">.</span>
+                    <h1 className="text-4xl font-semibold logo-hover">
+                        Tuh<BlinkingExclamation />N<span className="logo-dot-animated">.</span>
                     </h1>
                 </Link>
 
