@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import MotivationalInbox from "@/components/MotivationalInbox";
 import { useState } from "react";
+import { useInbox } from "@/components/InboxContext";
 
 import {
   Select,
@@ -42,6 +43,7 @@ const info = [
 ];
 
 const Contact = () => {
+  const { triggerNewNotification } = useInbox();
   const [formData, setFormData] = useState({
     firstname: '',
     lastname: '',
@@ -94,6 +96,7 @@ const Contact = () => {
       
       // Success
       setSubmitStatus('Message sent successfully! I\'ll get back to you soon.');
+      triggerNewNotification();
       setFormData({
         firstname: '',
         lastname: '',

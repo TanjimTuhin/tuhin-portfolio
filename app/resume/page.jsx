@@ -547,7 +547,11 @@ const Resume = () => {
                                 boxShadow: "0px 15px 40px rgba(153, 0, 255, 0.4)",
                                 borderColor: "rgba(153, 0, 255, 0.5)",
                               }}
-                              transition={{ type: "spring", stiffness: 300 }}
+                              transition={{
+                                type: "spring",
+                                stiffness: 300,
+                                rotate: { type: "tween", duration: 0.35, ease: "easeInOut" },
+                              }}
                               className="w-full h-[100px] sm:h-[120px] xl:h-[150px] glass-strong rounded-xl flex justify-center items-center group cursor-pointer relative overflow-hidden border border-white/10"
                             >
                               <motion.div
