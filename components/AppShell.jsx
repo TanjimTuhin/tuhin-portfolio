@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import StairTransition from "@/components/StairTransition";
 import PageTransition from "@/components/PageTransition";
 import FloatingNav from "@/components/FloatingNav";
+import FloatingNavMobile from "@/components/FloatingNavMobile";
 import NotificationPopup from "@/components/NotificationPopup";
 import InboxModal from "@/components/InboxModal";
 import { InboxProvider, useInbox } from "@/components/InboxContext";
@@ -22,6 +23,7 @@ const ShellInner = ({ children }) => {
     <>
       <Header />
       <FloatingNav />
+      <FloatingNavMobile />
 
       <StairTransition />
       <PageTransition>{children}</PageTransition>

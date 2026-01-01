@@ -398,7 +398,7 @@ const Resume = () => {
           </motion.div>
 
           {/* Tab Content Area */}
-          <div className="w-full xl:max-h-[calc(100vh-4rem)] xl:overflow-y-auto pb-20">
+          <div className="w-full max-h-[calc(100vh-8rem)] overflow-y-auto xl:max-h-[calc(100vh-4rem)] pb-20">
 
             {/* Experience Content */}
             <TabsContent value="experience" className="w-full">
@@ -410,10 +410,9 @@ const Resume = () => {
               >
                 <motion.h3 id="resume-experience" variants={itemVariants} className="text-2xl sm:text-3xl xl:text-4xl font-bold">{experience.title}</motion.h3>
                 <motion.p variants={itemVariants} className="max-w-[600px] text-white/60 mx-auto xl:mx-0 text-sm sm:text-base">{experience.description}</motion.p>
-                <ScrollArea className="h-auto max-h-[400px] sm:max-h-[500px] md:max-h-[600px] lg:max-h-[500px]">
-                  <motion.ul variants={containerVariants} className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-[30px] pr-2 sm:pr-4">
-                    {experience.items.map((item, index) => (
-                      <motion.li key={index} variants={itemVariants} className="glass-strong rounded-xl overflow-hidden border border-white/10 relative group">
+                <motion.ul variants={containerVariants} className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-[30px] pr-2 sm:pr-4 pb-6">
+                  {experience.items.map((item, index) => (
+                    <motion.li key={index} variants={itemVariants} className="glass-strong rounded-xl overflow-hidden border border-white/10 relative group">
                         <motion.div
                           whileHover={{
                             scale: 1.03,
@@ -456,11 +455,9 @@ const Resume = () => {
                             </motion.div>
                           )}
                         </AnimatePresence>
-                      </motion.li>
-                    ))}
-                  </motion.ul>
-                  <ScrollBar />
-                </ScrollArea>
+                    </motion.li>
+                  ))}
+                </motion.ul>
               </motion.div>
             </TabsContent>
 
@@ -474,50 +471,47 @@ const Resume = () => {
               >
                 <motion.h3 variants={itemVariants} className="text-2xl sm:text-3xl xl:text-4xl font-bold">{education.title}</motion.h3>
                 <motion.p variants={itemVariants} className="max-w-[600px] text-white/60 mx-auto xl:mx-0 text-sm sm:text-base">{education.description}</motion.p>
-                <ScrollArea className="h-auto max-h-[400px] sm:max-h-[450px] md:max-h-[500px] lg:max-h-[450px]">
-                  <motion.ul variants={containerVariants} className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-[30px] pr-2 sm:pr-4">
-                    {education.items.sort((a, b) => b.duration.localeCompare(a.duration)).map((item, index) => (
-                      <motion.li
-                        key={index}
-                        variants={itemVariants}
-                        whileHover={{
-                          scale: 1.05,
-                          y: -3,
-                          boxShadow: "0px 15px 30px rgba(168, 85, 247, 0.3)",
-                          borderColor: "rgba(168, 85, 247, 0.5)",
-                        }}
-                        onClick={() => setExpandedEducation(expandedEducation === index ? null : index)}
-                        className="glass-strong min-h-[160px] sm:h-auto py-4 sm:py-6 px-6 sm:px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1 cursor-pointer relative overflow-hidden border border-white/10"
-                      >
-                        <motion.div
-                          className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-accent/10"
-                          initial={{ x: "-100%" }}
-                          whileHover={{ x: "100%" }}
-                          transition={{ duration: 0.5 }}
-                        />
-                        <span className="text-accent text-base sm:text-lg relative z-10">{item.duration}</span>
-                        <h3 className="text-base sm:text-xl max-w-[260px] text-center lg:text-left relative z-10">{item.degree}</h3>
-                        <div className="flex items-center gap-3 relative z-10">
-                          <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
-                          <p className="text-white/60 text-sm sm:text-base">{item.institution}</p>
-                        </div>
-                        <AnimatePresence>
-                          {expandedEducation === index && (
-                            <motion.div
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: "auto" }}
-                              exit={{ opacity: 0, height: 0 }}
-                              className="mt-2 relative z-10"
-                            >
-                              <p className="text-white/50 text-xs sm:text-sm italic">Click to collapse</p>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </motion.li>
-                    ))}
-                  </motion.ul>
-                  <ScrollBar />
-                </ScrollArea>
+                <motion.ul variants={containerVariants} className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-[30px] pr-2 sm:pr-4 pb-6">
+                  {education.items.sort((a, b) => b.duration.localeCompare(a.duration)).map((item, index) => (
+                    <motion.li
+                      key={index}
+                      variants={itemVariants}
+                      whileHover={{
+                        scale: 1.05,
+                        y: -3,
+                        boxShadow: "0px 15px 30px rgba(168, 85, 247, 0.3)",
+                        borderColor: "rgba(168, 85, 247, 0.5)",
+                      }}
+                      onClick={() => setExpandedEducation(expandedEducation === index ? null : index)}
+                      className="glass-strong min-h-[160px] sm:h-auto py-4 sm:py-6 px-6 sm:px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1 cursor-pointer relative overflow-hidden border border-white/10"
+                    >
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-accent/10"
+                        initial={{ x: "-100%" }}
+                        whileHover={{ x: "100%" }}
+                        transition={{ duration: 0.5 }}
+                      />
+                      <span className="text-accent text-base sm:text-lg relative z-10">{item.duration}</span>
+                      <h3 className="text-base sm:text-xl max-w-[260px] text-center lg:text-left relative z-10">{item.degree}</h3>
+                      <div className="flex items-center gap-3 relative z-10">
+                        <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
+                        <p className="text-white/60 text-sm sm:text-base">{item.institution}</p>
+                      </div>
+                      <AnimatePresence>
+                        {expandedEducation === index && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="mt-2 relative z-10"
+                          >
+                            <p className="text-white/50 text-xs sm:text-sm italic">Click to collapse</p>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </motion.li>
+                  ))}
+                </motion.ul>
               </motion.div>
             </TabsContent>
 
