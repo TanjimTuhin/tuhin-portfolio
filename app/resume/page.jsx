@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FaHtml5, FaCss3, FaJs, FaReact, FaFigma, FaNodeJs, FaPython,
-  FaMicrochip, FaLinux, FaJava, FaBriefcase, FaGraduationCap, FaBrain, FaBookOpen, FaTrophy, FaCog
+  FaMicrochip, FaLinux, FaJava, FaBriefcase, FaGraduationCap, FaBrain, FaBookOpen, FaTrophy, FaCog, FaAward, FaFilm
 } from "react-icons/fa";
 import {
   SiTailwindcss, SiNextdotjs, SiFlutter, SiCplusplus, SiOracle,
@@ -310,6 +310,82 @@ const familiarWith = {
   ],
 };
 
+// Certification data
+const certification = {
+  icon: <FaAward />,
+  title: "Certifications",
+  description: "My certifications and learning achievements.",
+  subsections: [
+    {
+      name: "Competition",
+      items: [
+        {
+          title: "Hackathon 2024",
+          highestPosition: "Finalist",
+          comment: "Competed in a 48-hour coding marathon.",
+          image: "/assets/work/thumb_placeholder.png", // User to add photo later
+          description: "Details about the project and competition.",
+        },
+      ],
+    },
+    {
+      name: "Learning",
+      items: [
+        {
+          title: "Advanced Cybersecurity",
+          highestPosition: "Completed",
+          comment: "Specialized course on network defense.",
+          image: "/assets/work/thumb_placeholder.png", // User to add photo later
+          description: "Details about the learning journey.",
+        },
+      ],
+    },
+  ],
+};
+
+// Zone data
+const zone = {
+  icon: <FaFilm />,
+  title: "My Zone",
+  description: "My favorite movies, series, and anime.",
+  subsections: [
+    {
+      name: "Movie",
+      items: [
+        {
+          title: "Harry Potter",
+          highestPosition: "10/10",
+          comment: "\"Happiness can be found, even in the darkest of times, if one only remembers to turn on the light.\""
+        },
+        {
+          title: "The Lord of the Rings",
+          highestPosition: "10/10",
+          comment: "\"Even the smallest person can change the course of the future.\""
+        }
+      ]
+    },
+    {
+      name: "Series",
+      items: [
+         {
+           title: "Series",
+           highestPosition: "Favorites",
+           comment: "Various series I enjoy."
+         }
+      ]
+    },
+    {
+      name: "Anime",
+      items: [
+        { title: "Attack on Titan", highestPosition: "Top Tier", comment: "A masterpiece of storytelling." },
+        { title: "Monster", highestPosition: "Thriller", comment: "Psychological thriller at its best." },
+        { title: "Death Note", highestPosition: "Classic", comment: "Mind games and strategy." },
+        { title: "Tokyo Revengers", highestPosition: "Action", comment: "Time travel and gangs." }
+      ]
+    }
+  ]
+};
+
 // Animation variants
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -341,6 +417,8 @@ const ResumeContent = () => {
   const [expandedInterest, setExpandedInterest] = useState(null);
   const [expandedResearch, setExpandedResearch] = useState(null);
   const [expandedAchievement, setExpandedAchievement] = useState({});
+  const [expandedCertification, setExpandedCertification] = useState({});
+  const [expandedZone, setExpandedZone] = useState({});
   const [expandedFamiliarWith, setExpandedFamiliarWith] = useState({});
 
   const [activeTab, setActiveTab] = useState("experience");
@@ -361,6 +439,8 @@ const ResumeContent = () => {
       "interestedin",
       "research",
       "achievements",
+      "certification",
+      "zone",
       "familiarwith",
       "about",
     ]);
@@ -416,6 +496,8 @@ const ResumeContent = () => {
               <TabsTrigger value="interestedin" className={`${sidebarTriggerClass} text-sm sm:text-base`}>Interested In</TabsTrigger>
               <TabsTrigger value="research" className={`${sidebarTriggerClass} text-sm sm:text-base`}>Research</TabsTrigger>
               <TabsTrigger value="achievements" className={`${sidebarTriggerClass} text-sm sm:text-base`}>Achievements</TabsTrigger>
+              <TabsTrigger value="certification" className={`${sidebarTriggerClass} text-sm sm:text-base`}>Certification</TabsTrigger>
+              <TabsTrigger value="zone" className={`${sidebarTriggerClass} text-sm sm:text-base`}>Zone</TabsTrigger>
               <TabsTrigger value="familiarwith" className={`${sidebarTriggerClass} text-sm sm:text-base`}>Familiar With</TabsTrigger>
               <TabsTrigger value="about" className={`${sidebarTriggerClass} text-sm sm:text-base`}>About me</TabsTrigger>
             </TabsList>
@@ -784,6 +866,184 @@ const ResumeContent = () => {
                                       <div className="p-4 sm:p-6 space-y-2">
                                         <div className="text-white/90 text-sm sm:text-base">
                                           <span className="font-semibold text-accent">Highest Position: </span>
+                                          {item.highestPosition}
+                                        </div>
+                                        {item.comment && (
+                                          <div className="text-white/70 text-xs sm:text-sm italic">
+                                            {item.comment}
+                                          </div>
+                                        )}
+                                      </div>
+                                    </motion.div>
+                                  )}
+                                </AnimatePresence>
+                              </motion.div>
+                            );
+                          })}
+                        </motion.div>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                  <ScrollBar />
+                </ScrollArea>
+              </motion.div>
+            </TabsContent>
+
+            {/* Certification Content */}
+            <TabsContent value="certification" className="w-full">
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={containerVariants}
+                className="flex flex-col gap-6 sm:gap-[30px] text-center xl:text-left h-full"
+              >
+                <motion.h3 variants={itemVariants} className="text-2xl sm:text-3xl xl:text-4xl font-bold">{certification.title}</motion.h3>
+                <motion.p variants={itemVariants} className="max-w-[600px] text-white/60 mx-auto xl:mx-0 text-sm sm:text-base">{certification.description}</motion.p>
+                <ScrollArea className="h-[400px] sm:h-[500px] xl:h-[600px]">
+                  <motion.div variants={containerVariants} className="flex flex-col gap-6 sm:gap-8 pr-2 sm:pr-4 pb-4">
+                    {certification.subsections.map((subsection, subsectionIndex) => (
+                      <motion.div key={subsectionIndex} variants={itemVariants} className="flex flex-col gap-4">
+                        <motion.h4
+                          className="text-xl sm:text-2xl font-semibold text-accent flex items-center gap-3"
+                        >
+                          {certification.icon && <span className="text-accent text-xl sm:text-2xl">{certification.icon}</span>}
+                          {subsection.name}
+                        </motion.h4>
+                        <motion.div
+                          variants={containerVariants}
+                          className="grid grid-cols-1 gap-4 sm:gap-[30px]"
+                        >
+                          {subsection.items.map((item, itemIndex) => {
+                            const itemKey = `${subsectionIndex}-${itemIndex}`;
+                            const isExpanded = expandedCertification[itemKey] === true;
+                            return (
+                              <motion.div
+                                key={`${subsection.name}-${itemIndex}`}
+                                variants={itemVariants}
+                                className="bg-[#27272c] rounded-xl overflow-hidden"
+                              >
+                                <motion.div
+                                  whileHover={{ scale: 1.01, boxShadow: "0px 8px 15px rgba(0, 255, 153, 0.15)" }}
+                                  transition={{ type: "spring", stiffness: 300 }}
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    setExpandedCertification(prev => ({
+                                      ...prev,
+                                      [itemKey]: !prev[itemKey],
+                                    }));
+                                  }}
+                                  className="p-4 sm:p-6 cursor-pointer"
+                                >
+                                  <div className="flex flex-col lg:flex-row gap-6 items-start">
+                                      {/* Image Section */}
+                                      <div className="w-full lg:w-[45%] xl:w-[40%] flex-shrink-0 relative aspect-video lg:aspect-auto lg:h-48 rounded-lg overflow-hidden bg-black/50">
+                                          {/* Use regular img tag or Next.js Image if imported. Using img for simplicity with dynamic paths */}
+                                          <img 
+                                              src={item.image || "/assets/work/thumb_placeholder.png"} 
+                                              alt={item.title}
+                                              className="w-full h-full object-cover"
+                                          />
+                                      </div>
+
+                                      {/* Content Section */}
+                                      <div className="flex flex-col gap-4 w-full">
+                                          <div className="flex flex-col gap-2">
+                                              <h3 className="text-xl sm:text-2xl font-bold text-accent text-left">{item.title}</h3>
+                                              <span className="bg-primary text-white text-xs sm:text-sm py-1 px-3 rounded-full w-fit">
+                                                {item.highestPosition}
+                                              </span>
+                                          </div>
+                                          
+                                          {/* Description - always visible or collapsed? Assuming part of details */}
+                                          <p className="text-white/80 text-sm sm:text-base leading-relaxed text-left">
+                                              {item.description}
+                                          </p>
+
+                                          {/* Expandable details if any extra */}
+                                          {item.comment && (
+                                              <div className="text-white/60 text-xs sm:text-sm italic text-left mt-2">
+                                                  {item.comment}
+                                              </div>
+                                          )}
+                                      </div>
+                                  </div>
+                                </motion.div>
+                              </motion.div>
+                            );
+                          })}
+                        </motion.div>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                  <ScrollBar />
+                </ScrollArea>
+              </motion.div>
+            </TabsContent>
+
+            {/* Zone Content */}
+            <TabsContent value="zone" className="w-full">
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={containerVariants}
+                className="flex flex-col gap-6 sm:gap-[30px] text-center xl:text-left h-full"
+              >
+                <motion.h3 variants={itemVariants} className="text-2xl sm:text-3xl xl:text-4xl font-bold">{zone.title}</motion.h3>
+                <motion.p variants={itemVariants} className="max-w-[600px] text-white/60 mx-auto xl:mx-0 text-sm sm:text-base">{zone.description}</motion.p>
+                <ScrollArea className="h-[400px] sm:h-[500px] xl:h-[600px]">
+                  <motion.div variants={containerVariants} className="flex flex-col gap-6 sm:gap-8 pr-2 sm:pr-4 pb-4">
+                    {zone.subsections.map((subsection, subsectionIndex) => (
+                      <motion.div key={subsectionIndex} variants={itemVariants} className="flex flex-col gap-4">
+                        <motion.h4
+                          className="text-xl sm:text-2xl font-semibold text-accent flex items-center gap-3"
+                        >
+                          {zone.icon && <span className="text-accent text-xl sm:text-2xl">{zone.icon}</span>}
+                          {subsection.name}
+                        </motion.h4>
+                        <motion.div
+                          variants={containerVariants}
+                          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-[30px]"
+                        >
+                          {subsection.items.map((item, itemIndex) => {
+                            const itemKey = `${subsectionIndex}-${itemIndex}`;
+                            const isExpanded = expandedZone[itemKey] === true;
+                            return (
+                              <motion.div
+                                key={`${subsection.name}-${itemIndex}`}
+                                variants={itemVariants}
+                                className="bg-[#27272c] rounded-xl overflow-hidden"
+                              >
+                                <motion.div
+                                  whileHover={{ scale: 1.03, boxShadow: "0px 8px 15px rgba(0, 255, 153, 0.15)" }}
+                                  transition={{ type: "spring", stiffness: 300 }}
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    setExpandedZone(prev => ({
+                                      ...prev,
+                                      [itemKey]: !prev[itemKey],
+                                    }));
+                                  }}
+                                  className="p-4 sm:p-6 cursor-pointer"
+                                >
+                                  <div className="flex flex-col gap-2">
+                                    <h3 className="text-lg sm:text-xl font-bold text-accent text-left">{item.title}</h3>
+                                    <span className="bg-primary text-white text-xs sm:text-sm py-1 px-3 rounded-full w-fit">
+                                      {item.highestPosition}
+                                    </span>
+                                  </div>
+                                </motion.div>
+                                <AnimatePresence mode="wait">
+                                  {isExpanded && (
+                                    <motion.div
+                                      initial={{ opacity: 0, height: 0 }}
+                                      animate={{ opacity: 1, height: "auto" }}
+                                      exit={{ opacity: 0, height: 0 }}
+                                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                                      className="overflow-hidden bg-primary/50"
+                                    >
+                                      <div className="p-4 sm:p-6 space-y-2">
+                                        <div className="text-white/90 text-sm sm:text-base">
+                                          <span className="font-semibold text-accent">Rating/Type: </span>
                                           {item.highestPosition}
                                         </div>
                                         {item.comment && (
