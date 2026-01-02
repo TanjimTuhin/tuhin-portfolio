@@ -23,7 +23,7 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 const about = {
   title: "About Me",
   description:
-    "I am passionate about networking, cyber-security, machine learning, and IOT development. With a focus on delivering impactful solutions, I thrive in creating efficient and scalable systems. Beyond technical skills, I am a proactive learner, team player, and dedicated to continuous improvement.",
+    "Find me just in Linked In, Quora, Insta, Threads and Research Gate",
   info: [
     { fieldName: "Name", fieldValue: "Md. Tanjim Mahmud Tuhin" },
     { fieldName: "Phone", fieldValue: "(+880) 1303 933040" },

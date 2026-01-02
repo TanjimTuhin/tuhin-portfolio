@@ -53,11 +53,7 @@ const Nav = () => {
                 aria-label="Inbox"
             >
                 <MessageSquare className="w-6 h-6 text-accent" />
-                {notificationCount > 0 && (
-                    <span className="absolute -top-1 -right-1 bg-accent text-primary text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
-                        {notificationCount}
-                    </span>
-                )}
+                <span className="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full animate-pulse" />
             </button>
         </nav>
     );

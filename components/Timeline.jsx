@@ -26,7 +26,7 @@ const timelineEvents = [
     type: "education"
   },
   {
-    year: "2025",
+    year: "2024",
     title: "Research Publication",
     description: "Published research papers in semiconductor materials",
     icon: <Briefcase className="w-5 h-5" />,
