@@ -28,7 +28,7 @@ const projects = [
     description:
       "This project showcases my skills, projects, and professional background. Built with Next.js, React, Tailwind CSS, and Framer Motion for a clean, responsive, and animated user experience.",
     stack: [ { name: "Next.js" }, { name: "React JS" }, { name: "Tailwind CSS" }, { name: "Framer Motion" }, { name: "JavaScript" }, ],
-    image: "/assets/work/opencv.jpg",
+    image: "/assets/work/thumb2.jpg",
     live: "https://tuhin-portfolio-2jvt.vercel.app/",
     github: "https://github.com/Md-tuhin-Islam/tuhin-portfolio",
     details: [
@@ -76,10 +76,10 @@ const projects = [
     title: "Smart Face Attendance",
     description:
       "Developed a secure biometric attendance system capable of distinguishing real users from photos using liveness detection. Features a GUI dashboard for real-time monitoring and automated CSV reporting.",
-    stack: [{ name: "Python" }, { name: "OpenCV" }, { name: "Tkinter" }, { name: "dlib" }, { name: "NumPy" }],
-    image: "/assets/work/face_attendance.png", // REPLACE
+    stack: [{ name: "Python" }, { name: "OpenCV" }, { name: "Yolo v8 nano" }, { name: "Tkinter" }, { name: "dlib" }, { name: "NumPy" }],
+    image: "/assets/work/opencv.jpg",
     live: "", // User will provide later
-    github: "", // User will provide later
+    github: "https://github.com/TanjimTuhin/Smart-face-attendance", // User will provide later
     details: [
         "Implemented real-time face recognition using HOG descriptors and 128-d face encodings.",
         "Engineered an anti-spoofing 'Liveness Detection' system using Eye Aspect Ratio (EAR) logic.",
