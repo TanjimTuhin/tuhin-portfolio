@@ -28,7 +28,7 @@ const projects = [
     description:
       "This project showcases my skills, projects, and professional background. Built with Next.js, React, Tailwind CSS, and Framer Motion for a clean, responsive, and animated user experience.",
     stack: [ { name: "Next.js" }, { name: "React JS" }, { name: "Tailwind CSS" }, { name: "Framer Motion" }, { name: "JavaScript" }, ],
-    image: "/assets/work/thumb2.jpg",
+    image: "/assets/work/opencv.jpg",
     live: "https://tuhin-portfolio-2jvt.vercel.app/",
     github: "https://github.com/Md-tuhin-Islam/tuhin-portfolio",
     details: [
@@ -72,6 +72,23 @@ const projects = [
   },
   {
     num: "04",
+    category: "Computer Vision/AI",
+    title: "Smart Face Attendance",
+    description:
+      "Developed a secure biometric attendance system capable of distinguishing real users from photos using liveness detection. Features a GUI dashboard for real-time monitoring and automated CSV reporting.",
+    stack: [{ name: "Python" }, { name: "OpenCV" }, { name: "Tkinter" }, { name: "dlib" }, { name: "NumPy" }],
+    image: "/assets/work/face_attendance.png", // REPLACE
+    live: "", // User will provide later
+    github: "", // User will provide later
+    details: [
+        "Implemented real-time face recognition using HOG descriptors and 128-d face encodings.",
+        "Engineered an anti-spoofing 'Liveness Detection' system using Eye Aspect Ratio (EAR) logic.",
+        "Built a responsive GUI with Tkinter including camera controls, statistical dashboards, and CSV export.",
+        "Optimized image processing pipeline with NumPy for high-performance real-time video analysis."
+    ]
+  },
+  {
+    num: "05",
     category: "Hardware/PCB Design",
     title: "Mars Rover Wheel PCB",
     description:
@@ -87,7 +104,7 @@ const projects = [
     ]
   },
    {
-    num: "05",
+    num: "06",
     category: "Robotics/AI",
     title: "Object Manipulating Robotic Arm",
     description:
@@ -104,7 +121,7 @@ const projects = [
     ]
   },
    {
-    num: "06",
+    num: "07",
     category: "IoT",
     title: "IoT Gas & Fire Alarm",
     description:
@@ -120,7 +137,7 @@ const projects = [
     ]
   },
    {
-    num: "07",
+    num: "08",
     category: "Game Dev",
     title: "Slime Between Us",
     description:
@@ -136,7 +153,7 @@ const projects = [
     ]
   },
    {
-    num: "08",
+    num: "09",
     category: "Robotics",
     title: "Cosmo-clench Robot",
     description:
@@ -153,7 +170,7 @@ const projects = [
     ]
   },
   {
-    num: "09",
+    num: "10",
     category: "Image Processing",
     title: "Pseudo Coloring DIP",
     description:
@@ -169,7 +186,7 @@ const projects = [
     ]
   },
    {
-    num: "10",
+    num: "11",
     category: "Robotics",
     title: "LFR + Soccer Bot",
     description:
