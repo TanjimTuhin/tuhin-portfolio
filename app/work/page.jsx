@@ -185,8 +185,25 @@ const projects = [
         "Utilized Fast Fourier Transform (FFT) techniques."
     ]
   },
-   {
+  {
     num: "11",
+    category: "Full Stack Web Dev",
+    title: "Saj Beauty - E-commerce Platform",
+    description:
+      "Architected a pixel-perfect, high-performance beauty e-commerce web application replicating top-tier industry standards. Features a mobile-first 'app-like' navigation system, complex mega-menus, and a custom design system.",
+    stack: [{ name: "Next.js 14" }, { name: "TypeScript" }, { name: "Tailwind CSS" }, { name: "Zustand" }, { name: "PostgreSQL" }],
+    image: "/assets/work/saj_beauty.png", // REPLACE
+    live: "", // User will provide later
+    github: "", // User will provide later
+    details: [
+        "Built a high-performance frontend using Next.js 14 App Router with Server Side Rendering (SSR) for optimal SEO.",
+        "Engineered a complex 'Mega Menu' navigation and a dedicated mobile-first bottom navigation bar for an app-like UX.",
+        "Implemented a scalable global state management system for Cart, Wishlist, and User Authentication using Zustand.",
+        "Designed a modular UI component library with Tailwind CSS, including responsive product cards, flash sale timers, and concern-based filtering."
+    ]
+},
+   {
+    num: "12",
     category: "Robotics",
     title: "LFR + Soccer Bot",
     description:
