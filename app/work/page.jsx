@@ -89,7 +89,7 @@ const projects = [
     description:
       "Built an IoT system for controlling a 6 Degrees-of-Freedom rover via a custom Android app. Involved 3D arm design (Blender), desktop/Android app development (Qt/QML/C++), and communication protocol creation.",
     stack: [{ name: "C++" }, { name: "Qt/QML" }, { name: "Blender" }, { name: "Android" }, { name: "IoT" }],
-    image: "/assets/work/thumb_placeholder.png", // REPLACE
+    image: "/assets/work/8dof.jpg",
     live: "", // User will provide later
     github: "", // User will provide later
     details: [
