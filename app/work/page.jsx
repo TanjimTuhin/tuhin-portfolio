@@ -41,7 +41,7 @@ const projects = [
   {
     num: "02",
     category: "Cybersecurity & AI",
-    title: "Guardian SIEM - Intelligent SOC Platform",
+    title: "Agentic SIEM Ai - Intelligent SOC Platform",
     description:
       "A modern, lightweight Security Information and Event Management (SIEM) system featuring an AI-driven SOAR engine and Machine Learning anomaly detection. It integrates Google Gemini for natural language threat response, real-time log collection, and autonomous threat mitigation.",
     stack: [
