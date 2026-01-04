@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import React, { useState, useRef } from "react"; // Added useRef
+import React, { useState, useRef, useEffect } from "react";
 
 // --- Swiper and WorkSliderBtns Imports Removed ---
 
@@ -37,9 +37,37 @@ const projects = [
         "Structured components logically using React best practices."
     ]
   },
-  // Added Projects from CV
+
   {
     num: "02",
+    category: "Cybersecurity & AI",
+    title: "Guardian SIEM - Intelligent SOC Platform",
+    description:
+      "A modern, lightweight Security Information and Event Management (SIEM) system featuring an AI-driven SOAR engine and Machine Learning anomaly detection. It integrates Google Gemini for natural language threat response, real-time log collection, and autonomous threat mitigation.",
+    stack: [
+        { name: "Python (Flask)" },
+        { name: "Google Gemini AI" },
+        { name: "Machine Learning (Scikit-learn)" }, // Added ML
+        { name: "n8n Automation" },
+        { name: "SQLite" }
+    ],
+    image: ["/assets/work/t1.jpg", "/assets/work/n8n.jpg", "/assets/work/t2.jpg",
+      "/assets/work/2.jpg", "/assets/work/5.jpg", "/assets/work/n8n_code.jpg",
+      "/assets/work/t3.jpg"
+    ],
+    live: "", // User will provide later
+    github: "", // User will provide later
+    details: [
+        "Architected a decoupled system with a central Flask 'Brain' and lightweight agents (Windows & SNMP) for real-time log ingestion and event correlation.",
+        "Implemented a Machine Learning module (Anomaly Detection) to identify suspicious IP addresses by analyzing traffic patterns and access frequency, significantly reducing false positives compared to static rules.",
+        "Developed a 'Human-in-the-Loop' SOAR engine where AI interprets natural language commands (e.g., 'block IP') to execute actual firewall rules via system shell scripts.",
+        "Engineered an asynchronous enrichment pipeline using Python queues to handle high-volume logs, performing background GeoIP and AbuseIPDB threat lookups without server blocking.",
+        "Integrated a specialized Email Threat Detection module using n8n to perform 7-layer analysis (SPF/DKIM, content, attachments) with automated risk scoring."
+    ]
+},
+  // Added Projects from CV
+  {
+    num: "03",
     category: "Embedded/IoT",
     title: "SIM Recharge Token System",
     description:
@@ -55,7 +83,7 @@ const projects = [
     ]
   },
   {
-    num: "03",
+    num: "04",
     category: "Robotics/IoT",
     title: "6 DOF RoverNet",
     description:
@@ -71,13 +99,13 @@ const projects = [
     ]
   },
   {
-    num: "04",
+    num: "05",
     category: "Computer Vision/AI",
     title: "Smart Face Attendance",
     description:
       "Developed a secure biometric attendance system capable of distinguishing real users from photos using liveness detection. Features a GUI dashboard for real-time monitoring and automated CSV reporting.",
     stack: [{ name: "Python" }, { name: "OpenCV" }, { name: "Yolo v8 nano" }, { name: "Tkinter" }, { name: "dlib" }, { name: "NumPy" }],
-    image: "/assets/work/opencv.jpg",
+    image: ["/assets/work/opencv.jpg", "/assets/work/opencv2.jpg"],
     live: "", // User will provide later
     github: "https://github.com/TanjimTuhin/Smart-face-attendance", // User will provide later
     details: [
@@ -88,13 +116,13 @@ const projects = [
     ]
   },
   {
-    num: "05",
+    num: "06",
     category: "Hardware/PCB Design",
     title: "Mars Rover Wheel PCB",
     description:
       "Designed and fabricated a PCB using Proteus for controlling the wheels of the 'Mongol Barota' Mars rover, integrating Arduino and stepper motor drivers (TB6600) to reduce wiring complexity.",
     stack: [{ name: "Proteus" }, { name: "PCB Design" }, { name: "Arduino (C++)" }, { name: "Hardware" }],
-    image: "/assets/work/thumb_placeholder.png", // REPLACE
+    image: ["/assets/work/thumb_placeholder.png"], // REPLACE
     live: "", // User will provide later
     github: "", // User will provide later
     details: [
@@ -104,7 +132,7 @@ const projects = [
     ]
   },
    {
-    num: "06",
+    num: "07",
     category: "Robotics/AI",
     title: "Object Manipulating Robotic Arm",
     description:
@@ -121,7 +149,7 @@ const projects = [
     ]
   },
    {
-    num: "07",
+    num: "08",
     category: "IoT",
     title: "IoT Gas & Fire Alarm",
     description:
@@ -137,7 +165,7 @@ const projects = [
     ]
   },
    {
-    num: "08",
+    num: "09",
     category: "Game Dev",
     title: "Slime Between Us",
     description:
@@ -153,7 +181,7 @@ const projects = [
     ]
   },
    {
-    num: "09",
+    num: "10",
     category: "Robotics",
     title: "Cosmo-clench Robot",
     description:
@@ -170,7 +198,7 @@ const projects = [
     ]
   },
   {
-    num: "10",
+    num: "11",
     category: "Image Processing",
     title: "Pseudo Coloring DIP",
     description:
@@ -186,9 +214,9 @@ const projects = [
     ]
   },
   {
-    num: "11",
+    num: "12",
     category: "Full Stack Web Dev",
-    title: "Saj Beauty - E-commerce Platform",
+    title: "Saj - E-commerce Platform",
     description:
       "Architected a pixel-perfect, high-performance beauty e-commerce web application replicating top-tier industry standards. Features a mobile-first 'app-like' navigation system, complex mega-menus, and a custom design system.",
     stack: [{ name: "Next.js 14" }, { name: "TypeScript" }, { name: "Tailwind CSS" }, { name: "Zustand" }, { name: "PostgreSQL" }],
@@ -203,7 +231,7 @@ const projects = [
     ]
 },
    {
-    num: "12",
+    num: "13",
     category: "Robotics",
     title: "LFR + Soccer Bot",
     description:
@@ -220,6 +248,37 @@ const projects = [
   },
 ];
 
+// Helper component for auto‑slideshow images
+const AutoSlideshowImage = ({ images, alt, className, sizes, quality = 75 }) => {
+  const [index, setIndex] = useState(0);
+  const isArray = Array.isArray(images);
+  const imageList = isArray ? images : [images];
+
+  useEffect(() => {
+    if (!isArray || imageList.length <= 1) return;
+    const interval = setInterval(() => {
+      setIndex((i) => (i + 1) % imageList.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, [isArray, imageList.length]);
+
+  return (
+    <AnimatePresence mode="wait">
+      <motion.img
+        key={index}
+        src={imageList[index]}
+        alt={alt}
+        className={className}
+        sizes={sizes}
+        quality={quality}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.4 }}
+      />
+    </AnimatePresence>
+  );
+};
 
 // --- COMPONENT ---
 const Work = () => {
@@ -290,14 +349,12 @@ const Work = () => {
                  />
                  {/* Image Container */}
                  <div className="relative w-full h-48 md:h-56 flex-shrink-0 z-10"> {/* Added flex-shrink-0 */}
-                   <Image
-                     src={project.image}
-                     fill
-                     className="object-contain bg-black/10" // Use contain, add slight bg for placeholders
+                   <AutoSlideshowImage
+                     images={project.image}
                      alt={`Thumbnail for ${project.title}`}
-                     quality={75}
+                     className="w-full h-full object-contain bg-black/10"
                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                     onError={(e) => e.target.src = '/assets/work/thumb_placeholder.png'} // Fallback image
+                     quality={75}
                    />
                    {/* Overlay on hover */}
                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-2">
@@ -366,6 +423,18 @@ const Work = () => {
 
                 {/* Modal Content - Scrollable */}
                 <div className="overflow-y-auto pr-2 flex-1 space-y-4 custom-scrollbar"> {/* Allow content to scroll, added space-y and custom scrollbar class if needed */}
+                    {/* Image slideshow in modal */}
+                    {Array.isArray(selectedProject.image) && selectedProject.image.length > 1 && (
+                      <div className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden bg-black/10">
+                        <AutoSlideshowImage
+                          images={selectedProject.image}
+                          alt={`Slideshow for ${selectedProject.title}`}
+                          className="w-full h-full object-contain"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          quality={85}
+                        />
+                      </div>
+                    )}
                     {/* Re-display stack for context */}
                     <div className="mb-4">
                         <h3 className="text-lg font-semibold text-accent/90 mb-2">Technologies:</h3>
