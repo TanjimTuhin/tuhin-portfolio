@@ -46,9 +46,9 @@ const projects = [
       "A modern, lightweight Security Information and Event Management (SIEM) system featuring an AI-driven SOAR engine and Machine Learning anomaly detection. It integrates Google Gemini for natural language threat response, real-time log collection, and autonomous threat mitigation.",
     stack: [
         { name: "Python (Flask)" },
-        { name: "Google Gemini AI" },
-        { name: "Machine Learning (Scikit-learn)" }, // Added ML
         { name: "n8n Automation" },
+        { name: "Google Gemini AI" },
+        { name: "Machine Learning (Scikit-learn)" }, 
         { name: "SQLite" }
     ],
     image: ["/assets/work/t1.jpg", "/assets/work/n8n.jpg", "/assets/work/t2.jpg",
