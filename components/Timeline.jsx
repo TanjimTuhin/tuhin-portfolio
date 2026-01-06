@@ -19,6 +19,20 @@ const timelineEvents = [
     type: "milestone"
   },
   {
+    year: "2017",
+    title: "Secondary School Certificate",
+    description: "Finished SSC from Jessore",
+    icon: <GraduationCap className="w-5 h-5" />,
+    type: "education"
+  },
+  {
+    year: "2019",
+    title: "Higher Secondary Certificate",
+    description: "Finished HSC from Rajshahi",
+    icon: <GraduationCap className="w-5 h-5" />,
+    type: "education"
+  },
+  {
     year: "2020",
     title: "Education",
     description: "Started Electrical Engineering degree at MIST",
