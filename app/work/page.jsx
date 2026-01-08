@@ -246,6 +246,54 @@ const projects = [
         "Utilized Mecanum wheels for enhanced mobility."
     ]
   },
+  {
+    num: "14",
+    category: "Embedded Systems",
+    title: "Digital Eye Chart",
+    description:
+      "Built a digital vision testing system using Raspberry Pi to modernize traditional eye examination charts.",
+    stack: [{ name: "Python" }, { name: "Raspberry Pi" }, { name: "Tkinter" }, { name: "Embedded Linux" }, { name: "IR Remote" }, { name: "Arduino" }],
+    image: ["/assets/work/eye1.jpg","/assets/work/eye2.jpg","/assets/work/eye3.jpg","/assets/work/eye4.jpg"], 
+    live: "https://abdullaalshahariar.github.io/Eye-Test/", 
+    github: "", 
+    details: [
+        "Developed a responsive UI for displaying optotypes.",
+        "Integrated IR remote control for distance operation.",
+        "Deployed on Raspberry Pi for a portable standalone solution."
+    ]
+},
+{
+    num: "15",
+    category: "Branding & Web",
+    title: "Only Intern (OI)",
+    description:
+      "Established the brand identity and digital presence for an intern community platform.",
+    stack: [{ name: "Branding" }, { name: "Community" }, { name: "IOT" }],
+    image: "/assets/work/thumb_oi.png", 
+    live: "", 
+    github: "", 
+    details: [
+        "Designed IOT system and visual assets for brand consistency.",
+        "Developed a embedded system to showcase intern opportunities.",
+        "Created a cohesive digital strategy for community growth."
+    ]
+},
+{
+    num: "16",
+    category: "Web Development",
+    title: "TMYDS: Cosmic Messenger",
+    description:
+      "A 3D interactive galaxy that serves as an anonymous sentiment-based social network, allowing users to release messages into the void as stars, comets, or black holes.",
+    stack: [{ name: "React (Next.js)" }, { name: "Three.js (R3F)" }, { name: "TypeScript" }, { name: "Supabase" }, { name: "Tailwind CSS" }],
+    image: "/assets/work/thumb_tmyds.png", // REPLACE
+    live: "https://tmyds.vercel.app/", // Add live URL if deployed
+    github: "/assets/work/TMYDS.jpg", // User will provide later
+    details: [
+        "Built a procedural 3D galaxy with custom shaders for stars, nebulae, and black holes.",
+        "Implemented a 'Slow Web' sentiment engine that connects users via constellations based on emotional similarity.",
+        "Developed a 'Vault' feature with a hidden key-combo trigger for permanently archiving memories."
+    ]
+},
 ];
 
 // Helper component for auto‑slideshow images
