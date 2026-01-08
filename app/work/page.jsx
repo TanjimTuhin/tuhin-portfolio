@@ -287,7 +287,7 @@ const projects = [
     stack: [{ name: "React (Next.js)" }, { name: "Three.js (R3F)" }, { name: "TypeScript" }, { name: "Supabase" }, { name: "Tailwind CSS" }],
     image: "/assets/work/thumb_tmyds.png", // REPLACE
     live: "https://tmyds.vercel.app/", // Add live URL if deployed
-    github: "/assets/work/TMYDS.jpg", // User will provide later
+    github: "/assets/work/tmyds.jpg", // User will provide later
     details: [
         "Built a procedural 3D galaxy with custom shaders for stars, nebulae, and black holes.",
         "Implemented a 'Slow Web' sentiment engine that connects users via constellations based on emotional similarity.",
