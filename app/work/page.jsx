@@ -285,7 +285,7 @@ const projects = [
     description:
       "A 3D interactive galaxy that serves as an anonymous sentiment-based social network, allowing users to release messages into the void as stars, comets, or black holes.",
     stack: [{ name: "React (Next.js)" }, { name: "Three.js (R3F)" }, { name: "TypeScript" }, { name: "Supabase" }, { name: "Tailwind CSS" }],
-    image: "/assets/work/tmyds.png", // REPLACE
+    image: "/assets/work/tmyds.jpg", // REPLACE
     live: "https://tmyds.vercel.app/", // Add live URL if deployed
     github: "/assets/work/tmyds.jpg", // User will provide later
     details: [
