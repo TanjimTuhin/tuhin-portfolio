@@ -285,7 +285,7 @@ const projects = [
     description:
       "A 3D interactive galaxy that serves as an anonymous sentiment-based social network, allowing users to release messages into the void as stars, comets, or black holes.",
     stack: [{ name: "React (Next.js)" }, { name: "Three.js (R3F)" }, { name: "TypeScript" }, { name: "Supabase" }, { name: "Tailwind CSS" }],
-    image: "/assets/work/thumb_tmyds.png", // REPLACE
+    image: "/assets/work/tmyds.png", // REPLACE
     live: "https://tmyds.vercel.app/", // Add live URL if deployed
     github: "/assets/work/tmyds.jpg", // User will provide later
     details: [
@@ -294,6 +294,30 @@ const projects = [
         "Developed a 'Vault' feature with a hidden key-combo trigger for permanently archiving memories."
     ]
 },
+{
+    num: "17",
+    category: "Browser Extension",
+    title: "LinguaVerse",
+    description:
+      "An AI-powered browser extension that transforms text selection into comprehensive linguistic analysis, featuring real-time translation with synonyms, antonyms, grammar insights, and cultural context across 20+ languages.",
+    stack: [
+        { name: "JavaScript" }, 
+        { name: "Chrome Extension API" }, 
+        { name: "Claude AI (Anthropic)" }, 
+        { name: "HTML/CSS" }, 
+        { name: "Web APIs" }
+    ],
+    image: ["/assets/work/trans1.jpg","/assets/work/trans2.jpg","/assets/work/trans3.jpg","/assets/work/trans4.jpg","/assets/work/trans5.jpg","/assets/work/trans6.jpg"], // REPLACE
+    live: "https://chrome.google.com/webstore/...", // Add Chrome Web Store URL when published
+    github: "https://github.com/TanjimTuhin/Translator-Extension", // Add your GitHub repo
+    details: [
+        "Engineered a floating UI trigger system that detects text selection and positions a gradient-styled button dynamically at selection endpoints.",
+        "Integrated Claude Sonnet 4 API to deliver context-aware translations with linguistic metadata including etymology, pronunciation, part of speech, and usage formality levels.",
+        "Designed a comprehensive analysis dashboard featuring synonym/antonym clouds, bilingual example sentences, and cultural notes with smooth animations and gradient theming.",
+        "Implemented persistent storage for API credentials and language preferences with auto-save functionality across browsing sessions.",
+        "Created a scalable architecture supporting 20+ languages with auto-detection and bidirectional language swapping capabilities."
+    ]
+}
 ];
 
 // Helper component for auto‑slideshow images
