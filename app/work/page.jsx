@@ -303,19 +303,19 @@ const projects = [
     stack: [
         { name: "JavaScript" }, 
         { name: "Chrome Extension API" }, 
-        { name: "Claude AI (Anthropic)" }, 
+        { name: "Groq Llama 3.3" }, 
         { name: "HTML/CSS" }, 
         { name: "Web APIs" }
     ],
-    image: ["/assets/work/trans1.jpg","/assets/work/trans2.jpg","/assets/work/trans3.jpg","/assets/work/trans4.jpg","/assets/work/trans5.jpg","/assets/work/trans6.jpg"], // REPLACE
+    image: ["/assets/work/trans1.jpg","/assets/work/trans2.jpg","/assets/work/trans3.jpg","/assets/work/trans4.jpg","/assets/work/trans5.jpg","/assets/work/trans6.jpg"],
     live: "https://chrome.google.com/webstore/...", // Add Chrome Web Store URL when published
-    github: "https://github.com/TanjimTuhin/Translator-Extension", // Add your GitHub repo
+    github: "https://github.com/TanjimTuhin/Translator-Extension",
     details: [
-        "Engineered a floating UI trigger system that detects text selection and positions a gradient-styled button dynamically at selection endpoints.",
-        "Integrated Claude Sonnet 4 API to deliver context-aware translations with linguistic metadata including etymology, pronunciation, part of speech, and usage formality levels.",
-        "Designed a comprehensive analysis dashboard featuring synonym/antonym clouds, bilingual example sentences, and cultural notes with smooth animations and gradient theming.",
-        "Implemented persistent storage for API credentials and language preferences with auto-save functionality across browsing sessions.",
-        "Created a scalable architecture supporting 20+ languages with auto-detection and bidirectional language swapping capabilities."
+        "Engineered dual-trigger UI system with floating gradient button and inline watermark icon that dynamically positions near selected text, enabling instant translation activation through multiple interaction methods (click, context menu, keyboard shortcut).",
+        "Integrated Groq Llama 3.3-70B API with advanced prompt engineering to deliver context-aware translations with comprehensive linguistic metadata including IPA pronunciation, part of speech classification, bilingual definitions, and cultural usage notes.",
+        "Designed customizable settings panel with 9+ display toggles and dual translation modes (full target language vs. English definitions), enabling users to personalize linguistic analysis output based on learning preferences.",
+        "Implemented Chrome Storage API for persistent data management across sessions, storing translation history (50-item limit), user preferences, and language selections with automatic synchronization.",
+        "Created modular architecture supporting 12+ languages with auto-detection capabilities, bidirectional language swapping, synonym/antonym analysis, example sentence generation, and text-to-speech integration using Web Speech API."
     ]
 }
 ];
