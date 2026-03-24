@@ -317,7 +317,35 @@ const projects = [
         "Implemented Chrome Storage API for persistent data management across sessions, storing translation history (50-item limit), user preferences, and language selections with automatic synchronization.",
         "Created modular architecture supporting 12+ languages with auto-detection capabilities, bidirectional language swapping, synonym/antonym analysis, example sentence generation, and text-to-speech integration using Web Speech API."
     ]
+},
+{
+    num: "18",                          // adjust to the correct sequential number
+    category: "Browser Extension",
+    title: "BookshelfToPDF",
+    description:
+      "A Chrome extension that automatically screenshots every page of any web-based reader or paginated site and stitches them into a single, print-ready PDF — with pixel-perfect region cropping, dual navigation strategies, and a live thumbnail preview.",
+    stack: [
+        { name: "JavaScript" },
+        { name: "Chrome Extension API (MV3)" },
+        { name: "Chrome Offscreen API" },
+        { name: "HTML/CSS" },
+        { name: "Web APIs" },
+    ],
+    image: [
+        "/assets/work/bookshelf1.jpg",
+        "/assets/work/bookshelf2.jpg",
+    ],
+    live: "https://chrome.google.com/webstore/...", // Add Chrome Web Store URL when published
+    github: "https://github.com/TanjimTuhin/bookshelf-to-pdf",
+    details: [
+        "Engineered a dual navigation engine that automatically detects URL-based pagination patterns (pageid, page, p, query params, hash fragments) and falls back to keyboard ArrowRight simulation, enabling seamless capture across VitalSource, web readers, and any multi-page site without manual configuration.",
+        "Built a drag-to-select region-cropping pipeline using an injected fullscreen overlay (region-selector.js) that captures CSS-pixel coordinates and device pixel ratio, then routes screenshots through a Chrome Offscreen Document for pixel-accurate HTML5 Canvas cropping — eliminating UI chrome from every captured frame.",
+        "Architected the capture loop as a Chrome MV3 Service Worker (background.js) with a real-time broadcast system, pushing live SESSION_UPDATE messages to the popup UI for instant status updates, per-page thumbnail streaming, and progress tracking without keeping the popup open.",
+        "Designed a configurable capture settings panel with max-page limits and adjustable inter-page delay, paired with Start/Stop controls and a scrollable live thumbnail strip that auto-scrolls as pages are captured, giving users full visibility and control over long capture sessions.",
+        "Implemented a zero-dependency PDF generation module that assembles all captured screenshots into a self-contained HTML document with CSS print rules (@page margin: 0, page-break-before: always), opens it in a new tab, and auto-triggers Chrome's native print dialog — producing a clean, margin-free PDF with a single 'Save as PDF' click.",
+    ],
 }
+
 ];
 
 // Helper component for auto‑slideshow images
