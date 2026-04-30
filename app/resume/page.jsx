@@ -65,7 +65,7 @@ const experience = {
       ],
     },
     {
-      company: "Cybernetics Hi Tech Solutions", position: "Robotics Engineer", duration: "Feb 2025 - Dec 2025",
+      company: "Cybernetics Hi Tech Solutions", position: "Robotics Engineer", duration: "June 2025 - Dec 2025",
       details: [
         "Worked on automation, advanced robotics, embedded systems, drones, and IoT.",
         "Developed firmware using C/C++, Arduino, ESP-32, STM-32, Raspberry-Pi.",
@@ -74,7 +74,7 @@ const experience = {
       ],
     },
     {
-      company: "RBD SOFTWARE & TECHNOLOGY LIMITED", position: "Unity Developer", duration: "September 2024 - February 2025",
+      company: "RBD SOFTWARE & TECHNOLOGY LIMITED", position: "Unity Developer", duration: "December 2024 - May 2025",
       details: [
         "Developed and maintained Unity-based applications and games.",
         "Collaborated with cross-functional teams to deliver high-quality software solutions.",
