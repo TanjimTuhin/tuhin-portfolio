@@ -314,29 +314,46 @@ const familiarWith = {
 const certification = {
   icon: <FaAward />,
   title: "Certifications",
-  description: "My certifications and learning achievements.",
+  description: "Who needs Certifications? I do! 😄",
   subsections: [
     {
-      name: "Competition",
+      name: "Cybersecurity Certifications",
       items: [
         {
-          title: "Hackathon 2024",
-          highestPosition: "Finalist",
-          comment: "Competed in a 48-hour coding marathon.",
-          image: "/assets/work/thumb_placeholder.png", // User to add photo later
-          description: "Details about the project and competition.",
+          title: "Certified Ethical Hacker (CEH)",
+          highestPosition: "EC-Council",
+          comment: "ANSI National Accreditation Board (ANAB) Accredited ISO/IEC 17024",
+          image: "/assets/work/CEH.png",
+          description: "A comprehensive certification focused on the latest hacking tools and techniques used by hackers and information security professionals to lawfully hack an organization.",
+          issueDate: "27 April, 2026",
+          credentialId: "ECC5904721368",
         },
-      ],
-    },
-    {
-      name: "Learning",
-      items: [
         {
-          title: "Advanced Cybersecurity",
-          highestPosition: "Completed",
-          comment: "Specialized course on network defense.",
-          image: "/assets/work/thumb_placeholder.png", // User to add photo later
-          description: "Details about the learning journey.",
+          title: "Computer Hacking Forensic Investigator (CHFI)",
+          highestPosition: "EC-Council",
+          comment: "ANSI National Accreditation Board (ANAB) Accredited ISO/IEC 17024",
+          image: "/assets/work/CHFI.png",
+          description: "Validates the ability to detect hacking attacks, properly extract evidence to report the crime, and conduct audits to prevent future incidents.",
+          issueDate: "11 April, 2026",
+          credentialId: "ECC2781065439",
+        },
+        {
+          title: "Certified SOC Analyst (CSA)",
+          highestPosition: "EC-Council",
+          comment: "Security Operations Center Operations",
+          image: "/assets/work/CSA.png",
+          description: "Demonstrates proficiency in performing entry-level and intermediate-level Security Operations Center (SOC) operations.",
+          issueDate: "26 March, 2026",
+          credentialId: "ECC7906584132",
+        },
+        {
+          title: "EC-Council Certified Incident Handler (ECIH)",
+          highestPosition: "EC-Council",
+          comment: "ANSI National Accreditation Board (ANAB) Accredited",
+          image: "/assets/work/ECIH.png",
+          description: "Focuses on the skills required to effectively handle and respond to security incidents within an organization.",
+          issueDate: "14 March, 2026",
+          credentialId: "ECC6042971853",
         },
       ],
     },
@@ -958,6 +975,22 @@ const ResumeContent = () => {
                                           <p className="text-white/80 text-sm sm:text-base leading-relaxed text-left">
                                               {item.description}
                                           </p>
+
+                                          {/* Certification Details */}
+                                          <div className="flex flex-col gap-2 text-left">
+                                              {item.issueDate && (
+                                                  <div className="flex items-center gap-2">
+                                                      <span className="text-white/60 text-sm sm:text-base font-medium">Issue Date:</span>
+                                                      <span className="text-white/80 text-sm sm:text-base">{item.issueDate}</span>
+                                                  </div>
+                                              )}
+                                              {item.credentialId && (
+                                                  <div className="flex items-center gap-2">
+                                                      <span className="text-white/60 text-sm sm:text-base font-medium">Credential ID:</span>
+                                                      <span className="text-white/80 text-sm sm:text-base font-mono">{item.credentialId}</span>
+                                                  </div>
+                                              )}
+                                          </div>
 
                                           {/* Expandable details if any extra */}
                                           {item.comment && (
